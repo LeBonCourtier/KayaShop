@@ -32,86 +32,77 @@ export const ActionButtons: React.FC<ActionButtonsProps> = ({
   };
 
   return (
-    <div className="space-y-3.5">
-      {/* Quantity & Stock Indicator */}
+    <div className="space-y-2.5">
+      {/* Quantity & Stock */}
       <div className="flex items-center justify-between">
-        <span className="text-xs font-semibold text-zinc-700 uppercase tracking-wider">
-          Quantité
+        <span className="text-xs font-bold text-zinc-700 uppercase tracking-wider">
+          Quantité :
         </span>
-        <div className="flex items-center border border-zinc-300 rounded-xl bg-white p-1 shadow-2xs">
+        <div className="flex items-center border border-zinc-300 rounded-xl bg-white p-0.5 shadow-2xs">
           <button
             type="button"
             onClick={handleDecrease}
             disabled={quantity <= 1}
-            className="w-8 h-8 flex items-center justify-center rounded-lg text-zinc-600 hover:bg-zinc-100 disabled:opacity-30 disabled:hover:bg-transparent cursor-pointer transition-colors"
-            aria-label="Diminuer la quantité"
+            className="w-7 h-7 flex items-center justify-center rounded-lg text-zinc-600 hover:bg-zinc-100 disabled:opacity-30 cursor-pointer"
+            aria-label="Diminuer"
           >
-            <Minus className="w-3.5 h-3.5" />
+            <Minus className="w-3 h-3" />
           </button>
-          <span className="w-10 text-center font-bold text-sm text-zinc-900" aria-live="polite">
+          <span className="w-7 text-center font-bold text-xs text-zinc-900">
             {quantity}
           </span>
           <button
             type="button"
             onClick={handleIncrease}
             disabled={quantity >= 10}
-            className="w-8 h-8 flex items-center justify-center rounded-lg text-zinc-600 hover:bg-zinc-100 disabled:opacity-30 disabled:hover:bg-transparent cursor-pointer transition-colors"
-            aria-label="Augmenter la quantité"
+            className="w-7 h-7 flex items-center justify-center rounded-lg text-zinc-600 hover:bg-zinc-100 disabled:opacity-30 cursor-pointer"
+            aria-label="Augmenter"
           >
-            <Plus className="w-3.5 h-3.5" />
+            <Plus className="w-3 h-3" />
           </button>
         </div>
       </div>
 
-      {/* Buttons: Dominant Primary CTA with Shimmer + Secondary Cart */}
-      <div className="flex flex-col sm:flex-row gap-3">
-        {/* Dominant Primary Buy Now CTA with Shimmer & Spring scale */}
+      {/* Primary Row: Dominant Buy Now + Compact Cart Button */}
+      <div className="flex items-center gap-2">
         <button
           type="button"
           onClick={() => onBuyNow(quantity)}
           disabled={!inStock}
-          className="flex-1 btn-shimmer group relative overflow-hidden bg-gradient-to-r from-[#d94f26] to-[#eb5a2d] hover:from-[#c03d15] hover:to-[#d94f26] text-white font-bold text-base py-4 px-6 rounded-2xl shadow-lg shadow-[#d94f26]/25 transition-all duration-200 transform active:scale-[0.98] hover:scale-[1.01] flex items-center justify-center gap-2 cursor-pointer focus:outline-none focus:ring-4 focus:ring-[#d94f26]/30"
+          className="flex-1 bg-gradient-to-r from-[#d94f26] to-[#eb5a2d] hover:from-[#c03d15] hover:to-[#d94f26] text-white font-extrabold text-xs sm:text-sm py-3.5 px-4 rounded-2xl shadow-md shadow-[#d94f26]/20 flex items-center justify-center gap-1.5 transition-all transform active:scale-98 cursor-pointer"
         >
-          <span className="tracking-wide">COMMANDER MAINTENANT</span>
-          <ArrowRight className="w-5 h-5 transition-transform duration-200 group-hover:translate-x-1.5" />
+          <span>COMMANDER MAINTENANT</span>
+          <ArrowRight className="w-4 h-4" />
         </button>
 
-        {/* Secondary Add to Cart CTA */}
         <button
           type="button"
           onClick={handleAddToCartClick}
           disabled={!inStock}
-          className={`px-5 py-4 rounded-2xl font-bold text-sm border-2 transition-all duration-200 flex items-center justify-center gap-2 cursor-pointer focus:outline-none focus:ring-2 focus:ring-zinc-400 transform active:scale-95 ${
+          className={'p-3.5 rounded-2xl border-2 transition-all flex items-center justify-center cursor-pointer ' + (
             justAdded
-              ? 'bg-emerald-50 border-emerald-500 text-emerald-700 animate-badge-pop'
-              : 'bg-white border-zinc-900 text-zinc-900 hover:bg-zinc-900 hover:text-white'
-          }`}
-          aria-label="Ajouter au panier"
+              ? 'bg-emerald-50 border-emerald-500 text-emerald-700'
+              : 'bg-white border-zinc-300 text-zinc-800 hover:border-zinc-800'
+          )}
+          title="Ajouter au panier"
         >
           {justAdded ? (
-            <>
-              <Check className="w-4 h-4 text-emerald-600 animate-bounce" />
-              <span>Ajouté !</span>
-            </>
+            <Check className="w-5 h-5 text-emerald-600 animate-bounce" />
           ) : (
-            <>
-              <ShoppingBag className="w-4 h-4" />
-              <span className="hidden sm:inline">Ajouter au panier</span>
-              <span className="sm:hidden">Panier</span>
-            </>
+            <ShoppingBag className="w-5 h-5" />
           )}
         </button>
       </div>
 
-      {/* WhatsApp Fast Buy Option */}
+      {/* WhatsApp Compact Order */}
       {onWhatsAppBuy && (
         <button
           type="button"
           onClick={() => onWhatsAppBuy(quantity)}
-          className="w-full py-3 bg-emerald-50 hover:bg-emerald-100 text-emerald-800 border border-emerald-300 rounded-xl font-bold text-xs sm:text-sm flex items-center justify-center gap-2 transition-all transform active:scale-98 cursor-pointer"
+          className="w-full py-2 bg-emerald-50 hover:bg-emerald-100 text-emerald-800 border border-emerald-300 rounded-xl font-bold text-[11px] sm:text-xs flex items-center justify-center gap-1.5 transition-all cursor-pointer"
         >
-          <MessageCircle className="w-4 h-4 text-emerald-600" />
-          <span>Commander directement par WhatsApp (+229 43 79 70 42)</span>
+          <MessageCircle className="w-3.5 h-3.5 text-emerald-600" />
+          <span>Commander sur WhatsApp (+229 43 79 70 42)</span>
         </button>
       )}
     </div>

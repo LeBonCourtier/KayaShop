@@ -14,119 +14,98 @@ export const HeroBanner: React.FC<HeroBannerProps> = ({
   onSelectProduct,
   onExploreProducts,
 }) => {
-  const featuredProduct = products[0]; // Ouvre-vin ou tensiometre
+  const featuredProduct = products[0];
 
   return (
-    <section className="relative overflow-hidden pt-4 pb-12 sm:pt-8 sm:pb-16 bg-gradient-to-b from-[#faf7f2] via-[#fbf9f6] to-[#fbf9f6]">
-      
-      {/* Decorative floating animated background blobs */}
-      <div className="absolute top-0 right-1/4 -mt-16 w-96 h-96 bg-[#d94f26]/10 rounded-full blur-3xl pointer-events-none animate-float" />
-      <div className="absolute bottom-0 left-10 -mb-16 w-80 h-80 bg-amber-400/10 rounded-full blur-3xl pointer-events-none animate-float" style={{ animationDelay: '2s' }} />
-
+    <section className="relative overflow-hidden pt-3 pb-6 sm:pt-8 sm:pb-16 bg-gradient-to-b from-[#faf7f2] via-[#fbf9f6] to-[#fbf9f6]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
-        {/* Main Grid: 2 Columns on Desktop */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 lg:gap-12 items-center">
           
           {/* Left Text Content */}
-          <div className="lg:col-span-7 space-y-6 text-center lg:text-left animate-slide-up">
-
-            {/* Main Headline */}
-            <h1 className="text-3xl sm:text-5xl lg:text-6xl font-black text-zinc-950 tracking-tight leading-[1.12]">
+          <div className="lg:col-span-7 space-y-3.5 sm:space-y-6 text-center lg:text-left">
+            
+            <h1 className="text-2xl sm:text-4xl lg:text-5xl font-black text-zinc-950 tracking-tight leading-[1.15]">
               Les innovations utiles qui simplifient votre{' '}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#d94f26] via-[#eb5a2d] to-[#f97316]">
                 quotidien.
               </span>
             </h1>
 
-            {/* Subheading */}
-            <p className="text-sm sm:text-base lg:text-lg text-zinc-600 max-w-xl mx-auto lg:mx-0 leading-relaxed">
+            <p className="text-xs sm:text-base text-zinc-600 max-w-xl mx-auto lg:mx-0 leading-relaxed">
               Sélection exclusive d'appareils fiables, testés et livrés rapidement chez vous. Contrôlez votre colis avant de régler.
             </p>
 
-            {/* CTAs with Shimmer Animation */}
-            <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3 pt-2">
+            {/* CTAs */}
+            <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-2 pt-1">
               <button
                 onClick={onExploreProducts}
-                className="w-full sm:w-auto btn-shimmer bg-gradient-to-r from-[#d94f26] to-[#eb5a2d] hover:from-[#c03d15] hover:to-[#d94f26] text-white font-extrabold text-sm sm:text-base py-4 px-8 rounded-2xl shadow-lg shadow-[#d94f26]/25 flex items-center justify-center gap-2.5 transition-all transform active:scale-98 hover:scale-[1.02] cursor-pointer group"
+                className="w-full sm:w-auto bg-gradient-to-r from-[#d94f26] to-[#eb5a2d] hover:from-[#c03d15] hover:to-[#d94f26] text-white font-extrabold text-xs sm:text-sm py-3.5 px-7 rounded-2xl shadow-md shadow-[#d94f26]/20 flex items-center justify-center gap-2 transition-all transform active:scale-98 cursor-pointer"
               >
                 <span>DÉCOUVRIR LES PRODUITS</span>
-                <ArrowRight className="w-5 h-5 transition-transform duration-200 group-hover:translate-x-1.5" />
-              </button>
-
-              <button
-                onClick={() => {
-                  if (featuredProduct) onSelectProduct(featuredProduct);
-                }}
-                className="w-full sm:w-auto px-6 py-4 rounded-2xl font-bold text-sm bg-white hover:bg-zinc-50 text-zinc-800 border border-zinc-300 shadow-2xs transition-all hover:border-zinc-400 hover:scale-[1.01] cursor-pointer"
-              >
-                Voir le produit vedette
+                <ArrowRight className="w-4 h-4" />
               </button>
             </div>
 
-            {/* Trust Points under CTA */}
-            <div className="pt-4 flex flex-wrap items-center justify-center lg:justify-start gap-4 sm:gap-6 text-xs text-zinc-600">
-              <span className="flex items-center gap-1.5 font-medium transition-transform hover:scale-105">
-                <CheckCircle className="w-4 h-4 text-emerald-600" />
+            {/* Compact Trust Chips */}
+            <div className="pt-1 flex flex-wrap items-center justify-center lg:justify-start gap-1.5 sm:gap-3 text-[10px] sm:text-xs text-zinc-600">
+              <span className="inline-flex items-center gap-1 bg-white px-2.5 py-1 rounded-full border border-zinc-200 shadow-2xs">
+                <CheckCircle className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-emerald-600" />
                 <span>Paiement à la livraison</span>
               </span>
-              <span className="flex items-center gap-1.5 font-medium transition-transform hover:scale-105">
-                <Truck className="w-4 h-4 text-[#d94f26]" />
+              <span className="inline-flex items-center gap-1 bg-white px-2.5 py-1 rounded-full border border-zinc-200 shadow-2xs">
+                <Truck className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-[#d94f26]" />
                 <span>Livraison 24h/48h</span>
               </span>
-              <span className="flex items-center gap-1.5 font-medium transition-transform hover:scale-105">
-                <ShieldCheck className="w-4 h-4 text-emerald-600" />
+              <span className="inline-flex items-center gap-1 bg-white px-2.5 py-1 rounded-full border border-zinc-200 shadow-2xs">
+                <ShieldCheck className="w-3.5 h-3.5 text-emerald-600" />
                 <span>Colis vérifié</span>
               </span>
             </div>
 
           </div>
 
-          {/* Right Visual Showcase Card with card-lift physics */}
-          <div className="lg:col-span-5 animate-slide-up" style={{ animationDelay: '0.15s' }}>
+          {/* Right Visual Card */}
+          <div className="lg:col-span-5">
             {featuredProduct && (
               <div
                 onClick={() => onSelectProduct(featuredProduct)}
-                className="card-lift relative bg-white rounded-3xl p-6 sm:p-8 border border-zinc-200/90 shadow-xl group cursor-pointer"
+                className="relative bg-white rounded-3xl p-3.5 sm:p-6 border border-zinc-200/90 shadow-md group cursor-pointer"
               >
-
                 {/* Rating Badge */}
-                <div className="absolute top-4 right-4 z-10 flex items-center gap-1 bg-[#faf8f5] px-2.5 py-1 rounded-full border border-zinc-200 text-xs font-bold text-zinc-800 shadow-2xs">
-                  <Star className="w-3.5 h-3.5 fill-amber-400 text-amber-400" />
+                <div className="absolute top-3 right-3 z-10 flex items-center gap-1 bg-[#faf8f5] px-2 py-0.5 rounded-full border border-zinc-200 text-[10px] font-bold text-zinc-800">
+                  <Star className="w-3 h-3 fill-amber-400 text-amber-400" />
                   <span>{featuredProduct.rating.toFixed(1)}</span>
                 </div>
 
-                {/* Product Image Frame */}
-                <div className="aspect-square w-full rounded-2xl bg-[#faf7f2] border border-zinc-100 p-6 flex items-center justify-center overflow-hidden mb-5">
+                {/* Product Image */}
+                <div className="aspect-square w-full rounded-2xl bg-white border border-zinc-100 p-3 sm:p-4 flex items-center justify-center overflow-hidden mb-2.5">
                   <img
                     src={featuredProduct.images[0]?.url}
                     alt={featuredProduct.name}
-                    className="w-full h-full object-contain transition-transform duration-500 group-hover:scale-110"
+                    className="w-full h-full object-contain transition-transform duration-300 group-hover:scale-105"
                   />
                 </div>
 
                 {/* Info & Price */}
-                <div className="space-y-2">
-                  <span className="text-xs uppercase font-bold text-zinc-400">
+                <div className="space-y-1">
+                  <span className="text-[10px] uppercase font-bold text-zinc-400">
                     {featuredProduct.category}
                   </span>
-                  <h3 className="font-extrabold text-lg sm:text-xl text-zinc-900 group-hover:text-[#d94f26] transition-colors line-clamp-1">
+                  <h3 className="font-extrabold text-sm sm:text-lg text-zinc-900 group-hover:text-[#d94f26] transition-colors line-clamp-1">
                     {featuredProduct.name}
                   </h3>
-                  <p className="text-xs text-zinc-500 line-clamp-2">
-                    {featuredProduct.tagline}
-                  </p>
 
-                  <div className="pt-3 border-t border-zinc-100 flex items-center justify-between">
+                  <div className="pt-2 border-t border-zinc-100 flex items-center justify-between">
                     <div>
-                      <span className="text-[11px] text-zinc-400 block font-medium">Prix direct :</span>
-                      <span className="text-xl font-black text-zinc-950">
+                      <span className="text-[10px] text-zinc-400 block font-medium">Prix direct :</span>
+                      <span className="text-sm sm:text-lg font-black text-zinc-950">
                         {formatPrice(featuredProduct.price, featuredProduct.currency)}
                       </span>
                     </div>
-                    <span className="px-4 py-2.5 rounded-xl bg-[#d94f26] group-hover:bg-[#c03d15] text-white font-bold text-xs flex items-center gap-1.5 transition-all group-hover:shadow-md shadow-sm">
+                    <span className="px-3 py-1.5 sm:px-3.5 sm:py-2 rounded-xl bg-[#d94f26] text-white font-bold text-xs flex items-center gap-1">
                       <span>Commander</span>
-                      <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />
+                      <ArrowRight className="w-3 h-3" />
                     </span>
                   </div>
                 </div>

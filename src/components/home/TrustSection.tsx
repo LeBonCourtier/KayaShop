@@ -6,55 +6,55 @@ export const TrustSection: React.FC = () => {
     {
       icon: ShieldCheck,
       title: 'Paiement à la Livraison',
-      desc: 'Aucun paiement en ligne forcé. Vous ouvrez et vérifiez votre colis avant de régler au livreur.',
+      desc: 'Vous ouvrez et vérifiez votre colis avant de régler en espèces au livreur.',
     },
     {
       icon: Truck,
-      title: 'Expédition Rapide & Suivie',
-      desc: 'Livraison express sous 24h à 48h ouvrées dans les principales métropoles avec contact direct.',
+      title: 'Expédition Rapide',
+      desc: 'Livraison sous 24h à 48h ouvrées dans toutes les villes avec contact direct.',
     },
     {
       icon: CheckCircle2,
       title: 'Qualité 100% Garantie',
-      desc: 'Chaque appareil est scrupuleusement testé avant emballage. Satisfait ou échangé sous 48h.',
+      desc: 'Chaque appareil est testé avant expédition. Échange garanti sous 48h.',
     },
     {
       icon: Headphones,
-      title: 'Assistance WhatsApp 7j/7',
-      desc: 'Une équipe humaine et disponible pour vous conseiller, guider et suivre vos livraisons.',
+      title: 'Assistance WhatsApp',
+      desc: 'Une équipe humaine et réactive au +229 43 79 70 42 pour vous assister.',
     },
   ];
 
   return (
-    <section className="py-12 sm:py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="py-6 sm:py-14 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       
-      <div className="text-center max-w-2xl mx-auto mb-10 sm:mb-14">
-        <span className="text-xs uppercase font-bold tracking-widest text-[#d94f26] bg-[#fff5f2] px-3 py-1 rounded-full border border-[#fbdcd2]">
+      <div className="text-center max-w-2xl mx-auto mb-4 sm:mb-8">
+        <span className="text-[10px] uppercase font-bold tracking-widest text-[#d94f26] bg-[#fff5f2] px-2.5 py-0.5 rounded-full border border-[#fbdcd2]">
           Sécurité & Sérénité
         </span>
-        <h2 className="text-2xl sm:text-4xl font-black text-zinc-900 mt-3 tracking-tight">
+        <h2 className="text-lg sm:text-2xl font-black text-zinc-900 mt-1.5 tracking-tight">
           Pourquoi Acheter sur KayaShop ?
         </h2>
-        <p className="text-xs sm:text-sm text-zinc-600 mt-2">
-          Nous supprimons toutes les craintes liées aux achats en ligne grâce à un service honnête et transparent.
+        <p className="text-[11px] sm:text-xs text-zinc-600 mt-1">
+          Un service d'achat en ligne honnête, transparent et sécurisé au Bénin.
         </p>
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div className="grid grid-cols-2 lg:grid-cols-4 gap-2.5 sm:gap-5">
         {pillars.map((p, idx) => {
           const Icon = p.icon;
           return (
             <div
               key={idx}
-              className="p-6 rounded-3xl bg-white border border-zinc-200/90 shadow-2xs hover:shadow-md hover:border-[#d94f26]/40 transition-all duration-300 flex flex-col items-start group"
+              className="p-3 sm:p-5 rounded-2xl bg-white border border-zinc-200/90 shadow-2xs flex flex-col items-start"
             >
-              <div className="w-12 h-12 rounded-2xl bg-[#fff5f2] border border-[#fbdcd2] flex items-center justify-center text-[#d94f26] mb-4 transition-transform group-hover:scale-110">
-                <Icon className="w-6 h-6" />
+              <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-xl bg-[#fff5f2] border border-[#fbdcd2] flex items-center justify-center text-[#d94f26] mb-2">
+                <Icon className="w-4 h-4 sm:w-5 sm:h-5" />
               </div>
-              <h3 className="font-extrabold text-base text-zinc-900 mb-2 group-hover:text-[#d94f26] transition-colors">
+              <h3 className="font-bold text-xs sm:text-sm text-zinc-900 mb-0.5 leading-snug">
                 {p.title}
               </h3>
-              <p className="text-xs sm:text-sm text-zinc-600 leading-relaxed">
+              <p className="text-[10px] sm:text-xs text-zinc-500 leading-relaxed">
                 {p.desc}
               </p>
             </div>
