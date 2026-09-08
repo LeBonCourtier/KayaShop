@@ -192,15 +192,16 @@ export const Header: React.FC<HeaderProps> = ({
               <Search className="w-5 h-5" />
             </button>
 
-            {/* Direct WhatsApp Assistance Button */}
+            {/* Direct WhatsApp Assistance Icon */}
             <a
               href="https://wa.me/22943797042?text=Bonjour%20KayaShop,%20j'ai%20une%20question%20sur%20vos%20produits"
               target="_blank"
               rel="noopener noreferrer"
-              className="hidden sm:flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-emerald-50 text-emerald-700 hover:bg-emerald-100 border border-emerald-200 text-xs font-bold transition-all shadow-2xs"
+              className="p-2.5 rounded-full bg-emerald-50 text-emerald-600 hover:bg-emerald-500 hover:text-white border border-emerald-200 hover:border-emerald-500 transition-all shadow-xs flex items-center justify-center cursor-pointer"
+              title="Contacter sur WhatsApp (+229 43 79 70 42)"
+              aria-label="Contacter sur WhatsApp"
             >
-              <MessageCircle className="w-3.5 h-3.5 text-emerald-600" />
-              <span>Aide WhatsApp (+229 43 79 70 42)</span>
+              <MessageCircle className="w-5 h-5 shrink-0" />
             </a>
 
             {/* Cart Button */}

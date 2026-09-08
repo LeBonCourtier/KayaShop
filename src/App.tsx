@@ -8,35 +8,25 @@ import { AdminDashboard } from './components/admin/AdminDashboard';
 export function App() {
   const [productsList, setProductsList] = useState<Product[]>(() => productService.getProducts());
 
-  // Parse initial route from URL hash or localStorage
+  // Parse initial route strictly from URL hash
   const getInitialState = (currentProducts: Product[] = productsList) => {
     const defaultProduct = currentProducts[0] || productService.getProducts()[0];
-    const hash = window.location.hash;
+    const hash = window.location.hash || '';
 
     if (hash === '#/admin' || hash.startsWith('#/admin')) {
       return { view: 'admin' as const, product: defaultProduct };
-    } else if (hash.startsWith('#/produit/')) {
-      const slug = hash.replace('#/produit/', '');
+    }
+    
+    if (hash.startsWith('#/produit/')) {
+      const slug = hash.replace('#/produit/', '').split('?')[0];
       const found = currentProducts.find((p) => p.slug === slug || p.id === slug);
       if (found) {
         return { view: 'product' as const, product: found };
       }
-    } else if (hash === '#/' || hash === '#/boutique' || hash === '#/home' || hash === '#/catalog') {
-      return { view: 'home' as const, product: defaultProduct };
     }
 
-    // Fallback to localStorage
-    const savedView = localStorage.getItem('kayashop_view');
-    const savedProductId = localStorage.getItem('kayashop_product_id');
-    const savedProduct = currentProducts.find((p) => p.id === savedProductId) || defaultProduct;
-
-    if (savedView === 'admin') {
-      return { view: 'admin' as const, product: savedProduct };
-    }
-    if (savedView === 'home') {
-      return { view: 'home' as const, product: savedProduct };
-    }
-    return { view: 'product' as const, product: savedProduct };
+    // Default to Home for root, #/, #/home, #/catalog, or any unknown route
+    return { view: 'home' as const, product: defaultProduct };
   };
 
   const initial = getInitialState();
