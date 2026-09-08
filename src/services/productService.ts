@@ -1,7 +1,7 @@
 import { PRODUCTS as DEFAULT_PRODUCTS } from '../data/products';
 import type { Product } from '../types/product';
 
-const PRODUCTS_STORAGE_KEY = 'kayashop_custom_products_v1';
+const PRODUCTS_STORAGE_KEY = 'kayashop_custom_products_v2';
 
 export const productService = {
   /**
@@ -11,7 +11,6 @@ export const productService = {
     try {
       const data = localStorage.getItem(PRODUCTS_STORAGE_KEY);
       if (!data) {
-        // Initialize localStorage with default products
         localStorage.setItem(PRODUCTS_STORAGE_KEY, JSON.stringify(DEFAULT_PRODUCTS));
         return DEFAULT_PRODUCTS;
       }
@@ -19,7 +18,12 @@ export const productService = {
       if (!Array.isArray(parsed) || parsed.length === 0) {
         return DEFAULT_PRODUCTS;
       }
-      return parsed;
+      // Ensure all products have valid images and properties
+      const valid = parsed.filter((p) => p && p.id && p.name && Array.isArray(p.images) && p.images.length > 0);
+      if (valid.length === 0) {
+        return DEFAULT_PRODUCTS;
+      }
+      return valid;
     } catch {
       return DEFAULT_PRODUCTS;
     }

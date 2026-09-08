@@ -81,6 +81,8 @@ export function App() {
     return () => window.removeEventListener('hashchange', handleHashChange);
   }, []);
 
+  const activeProduct = currentProduct || productsList[0] || productService.getProducts()[0];
+
   return (
     <div className="flex flex-col min-h-screen">
       {/* Main View Router */}
@@ -89,7 +91,7 @@ export function App() {
           onBackToShop={navigateToHome}
           onNavigateToProduct={navigateToProduct}
         />
-      ) : currentView === 'home' ? (
+      ) : currentView === 'home' || !activeProduct ? (
         <HomePage
           products={productsList}
           onSelectProduct={navigateToProduct}
@@ -97,7 +99,7 @@ export function App() {
         />
       ) : (
         <ProductPage
-          product={currentProduct}
+          product={activeProduct}
           allProducts={productsList}
           onSelectProduct={navigateToProduct}
           onNavigateHome={navigateToHome}
