@@ -1,7 +1,7 @@
 import React from 'react';
 import type { Product } from '../../types/product';
 import { formatPrice } from '../../utils/formatters';
-import { ShieldCheck, ArrowRight, Truck, Star, CheckCircle, Sparkles, Flame } from 'lucide-react';
+import { ShieldCheck, ArrowRight, Truck, Star, CheckCircle } from 'lucide-react';
 
 interface HeroBannerProps {
   products: Product[];
@@ -28,19 +28,12 @@ export const HeroBanner: React.FC<HeroBannerProps> = ({
           
           {/* Left Text Content */}
           <div className="lg:col-span-7 space-y-4 sm:space-y-6 text-center lg:text-left">
-            
-            {/* Friendly Warm Pill */}
-            <div className="inline-flex items-center gap-2 bg-gradient-to-r from-orange-500/10 via-amber-500/10 to-orange-500/10 border border-[#d94f26]/25 px-3.5 py-1.5 rounded-full text-xs font-bold text-[#d94f26] shadow-2xs animate-fade-in-up">
-              <Flame className="w-4 h-4 text-[#d94f26] animate-wiggle" />
-              <span>Les meilleures trouvailles du moment</span>
-              <Sparkles className="w-3.5 h-3.5 text-amber-500 animate-pulse" />
-            </div>
 
             {/* Open, Warm & Catchy Headline */}
             <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black text-zinc-950 tracking-tight leading-[1.18]">
               Des pépites pratiques qui vous facilitent la vie au{' '}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#d94f26] via-[#eb5a2d] to-[#f97316]">
-                quotidien ✨
+                quotidien.
               </span>
             </h1>
 
@@ -84,12 +77,6 @@ export const HeroBanner: React.FC<HeroBannerProps> = ({
                 onClick={() => onSelectProduct(featuredProduct)}
                 className="relative bg-white rounded-3xl p-4 sm:p-6 border border-zinc-200/90 shadow-xl shadow-zinc-200/50 hover:shadow-2xl group cursor-pointer transition-all duration-300 transform hover:-translate-y-1.5"
               >
-                {/* Promo Spotlight Tag */}
-                <div className="absolute top-3.5 left-3.5 z-10 flex items-center gap-1 bg-[#fff5f2] border border-[#fbdcd2] text-[#d94f26] px-2.5 py-1 rounded-full text-[11px] font-extrabold shadow-2xs animate-badge-pop">
-                  <Sparkles className="w-3 h-3 text-[#d94f26]" />
-                  <span>Coup de cœur</span>
-                </div>
-
                 {/* Rating Badge */}
                 <div className="absolute top-3.5 right-3.5 z-10 flex items-center gap-1 bg-white/95 backdrop-blur-xs px-2.5 py-1 rounded-full border border-zinc-200 text-xs font-black text-zinc-900 shadow-2xs">
                   <Star className="w-3.5 h-3.5 fill-amber-400 text-amber-400" />
@@ -97,7 +84,7 @@ export const HeroBanner: React.FC<HeroBannerProps> = ({
                 </div>
 
                 {/* Product Image with smooth hover scale */}
-                <div className="aspect-square w-full rounded-2xl bg-[#faf7f2]/60 border border-zinc-100/80 p-4 sm:p-6 flex items-center justify-center overflow-hidden mb-3 mt-4">
+                <div className="aspect-square w-full rounded-2xl bg-[#faf7f2]/60 border border-zinc-100/80 p-4 sm:p-6 flex items-center justify-center overflow-hidden mb-3">
                   <img
                     src={featuredProduct.images[0]?.url}
                     alt={featuredProduct.name}
