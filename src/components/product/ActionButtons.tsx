@@ -69,10 +69,10 @@ export const ActionButtons: React.FC<ActionButtonsProps> = ({
           type="button"
           onClick={() => onBuyNow(quantity)}
           disabled={!inStock}
-          className="flex-1 bg-gradient-to-r from-[#d94f26] to-[#eb5a2d] hover:from-[#c03d15] hover:to-[#d94f26] text-white font-extrabold text-xs sm:text-sm py-3.5 px-4 rounded-2xl shadow-md shadow-[#d94f26]/20 flex items-center justify-center gap-1.5 transition-all transform active:scale-98 cursor-pointer"
+          className="flex-1 btn-shimmer bg-gradient-to-r from-[#d94f26] via-[#e5572b] to-[#eb5a2d] hover:from-[#c03d15] hover:to-[#d94f26] text-white font-extrabold text-xs sm:text-sm py-3.5 px-4 rounded-2xl shadow-lg shadow-[#d94f26]/25 flex items-center justify-center gap-1.5 transition-all transform active:scale-95 hover:scale-[1.01] cursor-pointer animate-pulse-glow"
         >
           <span>COMMANDER MAINTENANT</span>
-          <ArrowRight className="w-4 h-4" />
+          <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5" />
         </button>
 
         <button

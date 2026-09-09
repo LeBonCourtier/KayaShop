@@ -1,7 +1,7 @@
 import React from 'react';
 import type { Product } from '../../types/product';
 import { formatPrice } from '../../utils/formatters';
-import { ShieldCheck, ArrowRight, Truck, Star, CheckCircle } from 'lucide-react';
+import { ShieldCheck, ArrowRight, Truck, Star, CheckCircle, Sparkles, Flame } from 'lucide-react';
 
 interface HeroBannerProps {
   products: Product[];
@@ -17,95 +17,113 @@ export const HeroBanner: React.FC<HeroBannerProps> = ({
   const featuredProduct = products[0];
 
   return (
-    <section className="relative overflow-hidden pt-3 pb-6 sm:pt-8 sm:pb-16 bg-gradient-to-b from-[#faf7f2] via-[#fbf9f6] to-[#fbf9f6]">
+    <section className="relative overflow-hidden pt-4 pb-8 sm:pt-10 sm:pb-16 bg-gradient-to-b from-[#faf5ef] via-[#fcfbf9] to-[#fbf9f6]">
+      {/* Soft Animated Decorative Ambient Orbs */}
+      <div className="absolute -top-12 left-1/4 w-80 h-80 bg-orange-200/35 rounded-full blur-3xl animate-subtle-float pointer-events-none" />
+      <div className="absolute top-10 right-10 w-72 h-72 bg-amber-200/30 rounded-full blur-3xl animate-subtle-float pointer-events-none" style={{ animationDelay: '2s' }} />
+
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 lg:gap-12 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-12 items-center">
           
           {/* Left Text Content */}
-          <div className="lg:col-span-7 space-y-3.5 sm:space-y-6 text-center lg:text-left">
+          <div className="lg:col-span-7 space-y-4 sm:space-y-6 text-center lg:text-left">
             
-            <h1 className="text-2xl sm:text-4xl lg:text-5xl font-black text-zinc-950 tracking-tight leading-[1.15]">
-              Les innovations utiles qui simplifient votre{' '}
+            {/* Friendly Warm Pill */}
+            <div className="inline-flex items-center gap-2 bg-gradient-to-r from-orange-500/10 via-amber-500/10 to-orange-500/10 border border-[#d94f26]/25 px-3.5 py-1.5 rounded-full text-xs font-bold text-[#d94f26] shadow-2xs animate-fade-in-up">
+              <Flame className="w-4 h-4 text-[#d94f26] animate-wiggle" />
+              <span>Les meilleures trouvailles du moment</span>
+              <Sparkles className="w-3.5 h-3.5 text-amber-500 animate-pulse" />
+            </div>
+
+            {/* Open, Warm & Catchy Headline */}
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black text-zinc-950 tracking-tight leading-[1.18]">
+              Des pépites pratiques qui vous facilitent la vie au{' '}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#d94f26] via-[#eb5a2d] to-[#f97316]">
-                quotidien.
+                quotidien ✨
               </span>
             </h1>
 
-            <p className="text-xs sm:text-base text-zinc-600 max-w-xl mx-auto lg:mx-0 leading-relaxed">
-              Sélection exclusive d'appareils fiables, testés et livrés rapidement chez vous. Contrôlez votre colis avant de régler.
+            <p className="text-sm sm:text-base text-zinc-600 max-w-xl mx-auto lg:mx-0 leading-relaxed font-normal">
+              Faites-vous plaisir avec des objets malins, utiles et testés avec soin. Commandez en toute simplicité, inspectez votre colis à l'arrivée et réglez à la livraison !
             </p>
 
-            {/* CTAs */}
-            <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-2 pt-1">
+            {/* CTAs with animated shimmer & hover effects */}
+            <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3 pt-2">
               <button
                 onClick={onExploreProducts}
-                className="w-full sm:w-auto bg-gradient-to-r from-[#d94f26] to-[#eb5a2d] hover:from-[#c03d15] hover:to-[#d94f26] text-white font-extrabold text-xs sm:text-sm py-3.5 px-7 rounded-2xl shadow-md shadow-[#d94f26]/20 flex items-center justify-center gap-2 transition-all transform active:scale-98 cursor-pointer"
+                className="w-full sm:w-auto btn-shimmer bg-gradient-to-r from-[#d94f26] via-[#e5572b] to-[#f97316] hover:from-[#c03d15] hover:to-[#d94f26] text-white font-extrabold text-sm py-4 px-8 rounded-2xl shadow-lg shadow-[#d94f26]/30 flex items-center justify-center gap-2.5 transition-all transform active:scale-95 hover:scale-[1.02] cursor-pointer animate-pulse-glow"
               >
                 <span>DÉCOUVRIR LES PRODUITS</span>
-                <ArrowRight className="w-4 h-4" />
+                <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
               </button>
             </div>
 
-            {/* Compact Trust Chips */}
-            <div className="pt-1 flex flex-wrap items-center justify-center lg:justify-start gap-1.5 sm:gap-3 text-[10px] sm:text-xs text-zinc-600">
-              <span className="inline-flex items-center gap-1 bg-white px-2.5 py-1 rounded-full border border-zinc-200 shadow-2xs">
-                <CheckCircle className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-emerald-600" />
+            {/* Compact Trust Chips with subtle hover bounce */}
+            <div className="pt-2 flex flex-wrap items-center justify-center lg:justify-start gap-2 sm:gap-3 text-xs text-zinc-700 font-medium">
+              <span className="inline-flex items-center gap-1.5 bg-white/90 backdrop-blur-xs px-3 py-1.5 rounded-full border border-zinc-200/80 shadow-2xs hover:border-emerald-300 transition-all hover:scale-105">
+                <CheckCircle className="w-4 h-4 text-emerald-600 shrink-0" />
                 <span>Paiement à la livraison</span>
               </span>
-              <span className="inline-flex items-center gap-1 bg-white px-2.5 py-1 rounded-full border border-zinc-200 shadow-2xs">
-                <Truck className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-[#d94f26]" />
-                <span>Livraison 24h/48h</span>
+              <span className="inline-flex items-center gap-1.5 bg-white/90 backdrop-blur-xs px-3 py-1.5 rounded-full border border-zinc-200/80 shadow-2xs hover:border-orange-300 transition-all hover:scale-105">
+                <Truck className="w-4 h-4 text-[#d94f26] shrink-0" />
+                <span>Livraison 24h/48h Bénin</span>
               </span>
-              <span className="inline-flex items-center gap-1 bg-white px-2.5 py-1 rounded-full border border-zinc-200 shadow-2xs">
-                <ShieldCheck className="w-3.5 h-3.5 text-emerald-600" />
+              <span className="inline-flex items-center gap-1.5 bg-white/90 backdrop-blur-xs px-3 py-1.5 rounded-full border border-zinc-200/80 shadow-2xs hover:border-emerald-300 transition-all hover:scale-105">
+                <ShieldCheck className="w-4 h-4 text-emerald-600 shrink-0" />
                 <span>Colis vérifié</span>
               </span>
             </div>
 
           </div>
 
-          {/* Right Visual Card */}
+          {/* Right Visual Card with floating physics */}
           <div className="lg:col-span-5">
             {featuredProduct && (
               <div
                 onClick={() => onSelectProduct(featuredProduct)}
-                className="relative bg-white rounded-3xl p-3.5 sm:p-6 border border-zinc-200/90 shadow-md group cursor-pointer"
+                className="relative bg-white rounded-3xl p-4 sm:p-6 border border-zinc-200/90 shadow-xl shadow-zinc-200/50 hover:shadow-2xl group cursor-pointer transition-all duration-300 transform hover:-translate-y-1.5"
               >
+                {/* Promo Spotlight Tag */}
+                <div className="absolute top-3.5 left-3.5 z-10 flex items-center gap-1 bg-[#fff5f2] border border-[#fbdcd2] text-[#d94f26] px-2.5 py-1 rounded-full text-[11px] font-extrabold shadow-2xs animate-badge-pop">
+                  <Sparkles className="w-3 h-3 text-[#d94f26]" />
+                  <span>Coup de cœur</span>
+                </div>
+
                 {/* Rating Badge */}
-                <div className="absolute top-3 right-3 z-10 flex items-center gap-1 bg-[#faf8f5] px-2 py-0.5 rounded-full border border-zinc-200 text-[10px] font-bold text-zinc-800">
-                  <Star className="w-3 h-3 fill-amber-400 text-amber-400" />
+                <div className="absolute top-3.5 right-3.5 z-10 flex items-center gap-1 bg-white/95 backdrop-blur-xs px-2.5 py-1 rounded-full border border-zinc-200 text-xs font-black text-zinc-900 shadow-2xs">
+                  <Star className="w-3.5 h-3.5 fill-amber-400 text-amber-400" />
                   <span>{featuredProduct.rating.toFixed(1)}</span>
                 </div>
 
-                {/* Product Image */}
-                <div className="aspect-square w-full rounded-2xl bg-white border border-zinc-100 p-3 sm:p-4 flex items-center justify-center overflow-hidden mb-2.5">
+                {/* Product Image with smooth hover scale */}
+                <div className="aspect-square w-full rounded-2xl bg-[#faf7f2]/60 border border-zinc-100/80 p-4 sm:p-6 flex items-center justify-center overflow-hidden mb-3 mt-4">
                   <img
                     src={featuredProduct.images[0]?.url}
                     alt={featuredProduct.name}
-                    className="w-full h-full object-contain transition-transform duration-300 group-hover:scale-105"
+                    className="w-full h-full object-contain transition-transform duration-500 group-hover:scale-110"
                   />
                 </div>
 
                 {/* Info & Price */}
-                <div className="space-y-1">
-                  <span className="text-[10px] uppercase font-bold text-zinc-400">
+                <div className="space-y-1.5">
+                  <span className="text-[11px] uppercase font-bold tracking-wider text-zinc-400 block">
                     {featuredProduct.category}
                   </span>
-                  <h3 className="font-extrabold text-sm sm:text-lg text-zinc-900 group-hover:text-[#d94f26] transition-colors line-clamp-1">
+                  <h3 className="font-extrabold text-base sm:text-xl text-zinc-900 group-hover:text-[#d94f26] transition-colors line-clamp-1">
                     {featuredProduct.name}
                   </h3>
 
-                  <div className="pt-2 border-t border-zinc-100 flex items-center justify-between">
+                  <div className="pt-2.5 border-t border-zinc-100 flex items-center justify-between">
                     <div>
-                      <span className="text-[10px] text-zinc-400 block font-medium">Prix direct :</span>
-                      <span className="text-sm sm:text-lg font-black text-zinc-950">
+                      <span className="text-[10px] text-zinc-400 block font-semibold uppercase">Prix direct :</span>
+                      <span className="text-base sm:text-xl font-black text-zinc-950">
                         {formatPrice(featuredProduct.price, featuredProduct.currency)}
                       </span>
                     </div>
-                    <span className="px-3 py-1.5 sm:px-3.5 sm:py-2 rounded-xl bg-[#d94f26] text-white font-bold text-xs flex items-center gap-1">
+                    <span className="btn-shimmer px-4 py-2 sm:px-5 sm:py-2.5 rounded-xl bg-gradient-to-r from-[#d94f26] to-[#eb5a2d] text-white font-extrabold text-xs sm:text-sm flex items-center gap-1.5 shadow-md shadow-[#d94f26]/20 transition-all group-hover:scale-105">
                       <span>Commander</span>
-                      <ArrowRight className="w-3 h-3" />
+                      <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5" />
                     </span>
                   </div>
                 </div>

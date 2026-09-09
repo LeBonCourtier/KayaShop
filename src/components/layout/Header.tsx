@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import type { Product } from '../../types/product';
-import { ShoppingBag, Search, Menu, X, ShieldCheck, Sparkles, ArrowRight, PackageCheck, ChevronDown, MessageCircle } from 'lucide-react';
+import { ShoppingBag, Search, Menu, X, ArrowRight, PackageCheck, ChevronDown } from 'lucide-react';
 import { formatPrice } from '../../utils/formatters';
 
 interface HeaderProps {
@@ -49,33 +49,15 @@ export const Header: React.FC<HeaderProps> = ({
 
   return (
     <>
-      {/* Clean Top Banner Reassurance */}
-      <div className="bg-[#18181b] text-white text-xs py-2 px-4 font-medium tracking-wide">
-        <div className="max-w-7xl mx-auto flex items-center justify-between text-[11px] sm:text-xs">
-          <div className="flex items-center gap-2">
-            <Sparkles className="w-3.5 h-3.5 text-[#e05326] shrink-0" />
-            <span className="truncate">KayaShop — La boutique moderne des produits pratiques</span>
-          </div>
-          <div className="hidden md:flex items-center gap-5 text-zinc-300">
-            <span className="flex items-center gap-1.5">
-              <ShieldCheck className="w-3.5 h-3.5 text-emerald-400" />
-              Paiement et contrôle à la livraison
-            </span>
-            <span className="text-zinc-600">|</span>
-            <span className="text-amber-300 font-semibold">Livraison rapide 24h/48h</span>
-          </div>
-        </div>
-      </div>
-
       {/* Main Header Navbar */}
       <header className="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-zinc-200/80 shadow-xs transition-all">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 sm:h-20 flex items-center justify-between gap-4">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-14 sm:h-16 flex items-center justify-between gap-4">
           
-          {/* Left: Mobile menu toggle + Logo */}
+          {/* Left: Mobile menu toggle + Clean Logo */}
           <div className="flex items-center gap-3">
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-2 -ml-2 text-zinc-700 hover:text-zinc-900 rounded-lg lg:hidden focus:outline-none focus:ring-2 focus:ring-[#e05326] cursor-pointer"
+              className="p-2 -ml-2 text-zinc-700 hover:text-zinc-950 rounded-xl hover:bg-zinc-100 transition-colors lg:hidden focus:outline-none focus:ring-2 focus:ring-[#d94f26] cursor-pointer"
               aria-label="Menu principal"
             >
               {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
@@ -86,19 +68,11 @@ export const Header: React.FC<HeaderProps> = ({
               onClick={() => {
                 if (onNavigateHome) onNavigateHome();
               }}
-              className="flex items-center gap-3 group cursor-pointer text-left focus:outline-none"
+              className="group cursor-pointer text-left focus:outline-none transition-transform active:scale-95"
             >
-              <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-[#d94f26] to-[#f97316] flex items-center justify-center text-white shadow-md shadow-[#d94f26]/20 transition-transform group-hover:scale-105 shrink-0">
-                <span className="font-black text-xl tracking-tight">K</span>
-              </div>
-              <div className="flex flex-col justify-center">
-                <span className="font-extrabold text-xl sm:text-2xl tracking-tight text-zinc-900 leading-tight">
-                  Kaya<span className="text-[#d94f26]">Shop</span>
-                </span>
-                <span className="text-[9px] sm:text-[10px] tracking-wider uppercase font-semibold text-zinc-400 mt-0.5 leading-none">
-                  Qualité & Praticité
-                </span>
-              </div>
+              <span className="font-black text-2xl sm:text-3xl tracking-tight text-zinc-900 leading-none select-none">
+                Kaya<span className="text-[#d94f26]">Shop</span>
+              </span>
             </button>
           </div>
 
@@ -177,42 +151,30 @@ export const Header: React.FC<HeaderProps> = ({
             </a>
           </nav>
 
-          {/* Right: Search, WhatsApp Contact, Cart */}
-          <div className="flex items-center gap-2 sm:gap-3">
+          {/* Right: Search, Cart */}
+          <div className="flex items-center gap-1.5 sm:gap-2">
             {/* Search Trigger */}
             <button
               onClick={() => setSearchOpen(!searchOpen)}
-              className={`p-2 rounded-full transition-colors cursor-pointer ${
+              className={`p-2.5 rounded-full transition-all cursor-pointer ${
                 searchOpen
                   ? 'bg-zinc-100 text-[#d94f26]'
-                  : 'text-zinc-700 hover:text-zinc-950 hover:bg-zinc-100'
+                  : 'text-zinc-700 hover:text-zinc-950 hover:bg-zinc-100 active:scale-95'
               }`}
               aria-label="Rechercher un produit"
             >
               <Search className="w-5 h-5" />
             </button>
 
-            {/* Direct WhatsApp Assistance Icon */}
-            <a
-              href="https://wa.me/22943797042?text=Bonjour%20KayaShop,%20j'ai%20une%20question%20sur%20vos%20produits"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="p-2.5 rounded-full bg-emerald-50 text-emerald-600 hover:bg-emerald-500 hover:text-white border border-emerald-200 hover:border-emerald-500 transition-all shadow-xs flex items-center justify-center cursor-pointer"
-              title="Contacter sur WhatsApp (+229 43 79 70 42)"
-              aria-label="Contacter sur WhatsApp"
-            >
-              <MessageCircle className="w-5 h-5 shrink-0" />
-            </a>
-
-            {/* Cart Button */}
+            {/* Cart Button with animated badge */}
             <button
               onClick={onOpenCart}
-              className="relative p-2.5 text-zinc-700 hover:text-zinc-950 bg-zinc-100 hover:bg-zinc-200 rounded-full transition-colors flex items-center gap-1 cursor-pointer focus:outline-none focus:ring-2 focus:ring-[#d94f26]"
+              className="relative p-2.5 text-zinc-700 hover:text-zinc-950 bg-zinc-100 hover:bg-zinc-200 active:scale-95 rounded-full transition-all flex items-center justify-center cursor-pointer focus:outline-none focus:ring-2 focus:ring-[#d94f26]"
               aria-label={`Panier (${cartCount} articles)`}
             >
               <ShoppingBag className="w-5 h-5" />
               {cartCount > 0 && (
-                <span className="absolute -top-1 -right-1 bg-[#d94f26] text-white text-[10px] font-black w-5 h-5 rounded-full flex items-center justify-center shadow-sm animate-pulse">
+                <span className="absolute -top-1 -right-1 bg-[#d94f26] text-white text-[10px] font-black w-5 h-5 rounded-full flex items-center justify-center shadow-md animate-bounce">
                   {cartCount}
                 </span>
               )}

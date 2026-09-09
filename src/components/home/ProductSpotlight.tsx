@@ -84,7 +84,7 @@ export const ProductSpotlight: React.FC<ProductSpotlightProps> = ({
 
                 <button
                   onClick={() => onQuickBuy(product)}
-                  className="px-6 py-3.5 rounded-xl bg-gradient-to-r from-[#d94f26] to-[#eb5a2d] hover:from-[#c03d15] hover:to-[#d94f26] text-white font-extrabold text-xs sm:text-sm shadow-md shadow-[#d94f26]/20 flex items-center gap-2 transition-all transform active:scale-95 cursor-pointer"
+                  className="btn-shimmer px-6 py-3.5 rounded-xl bg-gradient-to-r from-[#d94f26] via-[#e5572b] to-[#eb5a2d] hover:from-[#c03d15] hover:to-[#d94f26] text-white font-extrabold text-xs sm:text-sm shadow-md shadow-[#d94f26]/20 flex items-center gap-2 transition-all transform active:scale-95 hover:scale-[1.02] cursor-pointer"
                 >
                   <span>Commander maintenant</span>
                   <ArrowRight className="w-4 h-4" />

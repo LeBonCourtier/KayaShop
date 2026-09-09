@@ -1,5 +1,5 @@
 import React from 'react';
-import { MessageCircle, ShieldCheck, Truck, CheckCircle2 } from 'lucide-react';
+import { ShieldCheck, Truck, CheckCircle2 } from 'lucide-react';
 
 export const Footer: React.FC = () => {
   return (
@@ -23,13 +23,10 @@ export const Footer: React.FC = () => {
         </div>
 
         {/* Main Footer Links */}
-        <div className="py-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-8">
+        <div className="py-6 grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8">
           <div>
-            <div className="flex items-center gap-2 mb-2">
-              <div className="w-7 h-7 rounded-lg bg-gradient-to-tr from-[#d94f26] to-[#f97316] flex items-center justify-center font-black text-white text-sm shadow-sm">
-                K
-              </div>
-              <span className="font-extrabold text-base sm:text-lg tracking-tight">
+            <div className="mb-2">
+              <span className="font-black text-xl sm:text-2xl tracking-tight">
                 Kaya<span className="text-[#d94f26]">Shop</span>
               </span>
             </div>
@@ -60,24 +57,6 @@ export const Footer: React.FC = () => {
               <li>• Échange garanti sous 48h en cas de défaut</li>
               <li>• Expédition dans toutes les villes du Bénin</li>
             </ul>
-          </div>
-
-          <div>
-            <h4 className="font-bold text-[11px] sm:text-xs text-zinc-300 uppercase tracking-wider mb-2">
-              Service Client
-            </h4>
-            <a
-              href="https://wa.me/22943797042?text=Bonjour%20KayaShop,%20j'ai%20une%20question"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="p-2.5 sm:p-3 bg-emerald-950/60 hover:bg-emerald-900/60 border border-emerald-700/50 rounded-xl flex items-center gap-2 text-xs text-emerald-300 font-bold transition-all"
-            >
-              <MessageCircle className="w-4 h-4 sm:w-5 sm:h-5 text-emerald-400 shrink-0" />
-              <div>
-                <span className="text-[10px] text-emerald-400 block font-normal">Assistance WhatsApp 7j/7</span>
-                <span>+229 43 79 70 42</span>
-              </div>
-            </a>
           </div>
         </div>
 
