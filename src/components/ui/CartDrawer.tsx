@@ -1,6 +1,7 @@
 import React from 'react';
 import { formatPrice } from '../../utils/formatters';
-import { X, Trash2, Plus, Minus, ShoppingBag, ArrowRight, ShieldCheck } from 'lucide-react';
+import { sendWhatsAppCartOrder } from '../../utils/whatsapp';
+import { X, Trash2, Plus, Minus, ShoppingBag, ShieldCheck, MessageCircle } from 'lucide-react';
 
 export interface CartItem {
   id: string;
@@ -17,7 +18,7 @@ interface CartDrawerProps {
   items: CartItem[];
   onUpdateQuantity: (id: string, delta: number) => void;
   onRemoveItem: (id: string) => void;
-  onCheckout: () => void;
+  onCheckout?: () => void;
 }
 
 export const CartDrawer: React.FC<CartDrawerProps> = ({
@@ -26,11 +27,15 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
   items,
   onUpdateQuantity,
   onRemoveItem,
-  onCheckout,
 }) => {
   if (!isOpen) return null;
 
   const total = items.reduce((sum, item) => sum + item.price * item.quantity, 0);
+
+  const handleValidateWhatsApp = () => {
+    sendWhatsAppCartOrder(items);
+    onClose();
+  };
 
   return (
     <div
@@ -139,14 +144,11 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
             </div>
 
             <button
-              onClick={() => {
-                onClose();
-                onCheckout();
-              }}
-              className="w-full py-3.5 bg-gradient-to-r from-[#d94f26] to-[#eb5a2d] hover:from-[#c03d15] hover:to-[#d94f26] text-white font-extrabold text-sm rounded-xl shadow-md shadow-[#d94f26]/20 flex items-center justify-center gap-2 transition-all cursor-pointer"
+              onClick={handleValidateWhatsApp}
+              className="w-full btn-shimmer py-3.5 bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold text-sm rounded-xl shadow-md shadow-emerald-600/25 flex items-center justify-center gap-2 transition-all cursor-pointer transform active:scale-95"
             >
-              <span>PASSER LA COMMANDE</span>
-              <ArrowRight className="w-4 h-4" />
+              <MessageCircle className="w-4 h-4" />
+              <span>COMMANDER SUR WHATSAPP</span>
             </button>
           </div>
         )}

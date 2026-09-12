@@ -46,10 +46,10 @@ export const FinalCTA: React.FC<FinalCTAProps> = ({
             <button
               onClick={onBuyNow}
               disabled={!inStock}
-              className="w-full sm:w-auto bg-gradient-to-r from-[#d94f26] to-[#eb5a2d] hover:from-[#c03d15] hover:to-[#d94f26] text-white font-extrabold text-base py-4 px-8 rounded-2xl shadow-xl shadow-[#d94f26]/30 flex items-center justify-center gap-3 transition-all transform active:scale-95 cursor-pointer"
+              className="w-full sm:w-auto btn-shimmer bg-gradient-to-r from-[#d94f26] via-[#e5572b] to-[#eb5a2d] hover:from-[#c03d15] hover:to-[#d94f26] text-white font-extrabold text-base py-4 px-8 rounded-2xl shadow-xl shadow-[#d94f26]/30 flex items-center justify-center gap-3 transition-all transform active:scale-95 hover:scale-[1.02] cursor-pointer animate-pulse-glow"
             >
-              <span>COMMANDER MAINTENANT</span>
-              <ArrowRight className="w-5 h-5" />
+              <span>COMMANDER SUR WHATSAPP</span>
+              <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
             </button>
           </div>
         </div>

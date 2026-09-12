@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import type { Product } from '../../types/product';
-import type { OrderItem } from '../../types/order';
+import { sendWhatsAppOrder } from '../../utils/whatsapp';
 import { Header } from '../layout/Header';
 import { HeroBanner } from './HeroBanner';
 import { CategoryGrid } from './CategoryGrid';
@@ -9,7 +9,6 @@ import { ProductSpotlight } from './ProductSpotlight';
 import { TrustSection } from './TrustSection';
 import { TestimonialsSection } from './TestimonialsSection';
 import { FAQSection } from './FAQSection';
-import { CheckoutModal } from '../checkout/CheckoutModal';
 import { OrderTrackingModal } from '../checkout/OrderTrackingModal';
 import { CartDrawer, type CartItem } from '../ui/CartDrawer';
 import { Footer } from '../layout/Footer';
@@ -26,11 +25,9 @@ export const HomePage: React.FC<HomePageProps> = ({
   onNavigateToShop,
 }) => {
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
-  const [isCheckoutOpen, setIsCheckoutOpen] = useState<boolean>(false);
   const [isCartOpen, setIsCartOpen] = useState<boolean>(false);
   const [isTrackingOpen, setIsTrackingOpen] = useState<boolean>(false);
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
-  const [checkoutItems, setCheckoutItems] = useState<OrderItem[]>([]);
 
   // Cart Management
   const handleAddToCart = (product: Product) => {
@@ -71,19 +68,14 @@ export const HomePage: React.FC<HomePageProps> = ({
     setCartItems((prev) => prev.filter((i) => i.id !== id));
   };
 
-  // Quick Direct Buy from Homepage Card
+  // Quick Direct Buy from Homepage Card via WhatsApp
   const handleQuickBuy = (product: Product) => {
-    setCheckoutItems([
-      {
-        productId: product.id,
-        name: product.name,
-        price: product.price,
-        quantity: 1,
-        image: product.images[0]?.url || '',
-        currency: product.currency,
-      },
-    ]);
-    setIsCheckoutOpen(true);
+    sendWhatsAppOrder({
+      productName: product.name,
+      price: product.price,
+      quantity: 1,
+      currency: product.currency,
+    });
   };
 
   const handleExploreScroll = () => {
@@ -160,29 +152,6 @@ export const HomePage: React.FC<HomePageProps> = ({
 
       </main>
 
-      {/* Checkout Modal */}
-      <CheckoutModal
-        isOpen={isCheckoutOpen}
-        onClose={() => setIsCheckoutOpen(false)}
-        items={
-          checkoutItems.length > 0
-            ? checkoutItems
-            : cartItems.map((ci) => ({
-                productId: ci.id,
-                name: ci.name,
-                price: ci.price,
-                quantity: ci.quantity,
-                image: ci.image,
-                currency: ci.currency,
-              }))
-        }
-        currency="FCFA"
-        onOrderCompleted={() => {
-          setCartItems([]);
-          setCheckoutItems([]);
-        }}
-      />
-
       {/* Order Tracking Modal */}
       <OrderTrackingModal
         isOpen={isTrackingOpen}
@@ -196,20 +165,6 @@ export const HomePage: React.FC<HomePageProps> = ({
         items={cartItems}
         onUpdateQuantity={handleUpdateCartQuantity}
         onRemoveItem={handleRemoveCartItem}
-        onCheckout={() => {
-          setIsCartOpen(false);
-          setCheckoutItems(
-            cartItems.map((ci) => ({
-              productId: ci.id,
-              name: ci.name,
-              price: ci.price,
-              quantity: ci.quantity,
-              image: ci.image,
-              currency: ci.currency,
-            }))
-          );
-          setIsCheckoutOpen(true);
-        }}
       />
 
       {/* Footer */}

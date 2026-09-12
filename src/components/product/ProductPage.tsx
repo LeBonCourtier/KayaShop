@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import type { Product, ComplementaryProduct } from '../../types/product';
-import type { OrderItem } from '../../types/order';
+import { sendWhatsAppOrder } from '../../utils/whatsapp';
 import { Header } from '../layout/Header';
 import { Breadcrumb } from '../layout/Breadcrumb';
 import { ProductGallery } from './ProductGallery';
@@ -19,12 +19,10 @@ import { RelatedProducts } from './RelatedProducts';
 import { ProductFAQ } from './ProductFAQ';
 import { FinalCTA } from './FinalCTA';
 import { StickyBuyBar } from './StickyBuyBar';
-import { CheckoutModal } from '../checkout/CheckoutModal';
 import { OrderTrackingModal } from '../checkout/OrderTrackingModal';
 import { CartDrawer, type CartItem } from '../ui/CartDrawer';
 import { Footer } from '../layout/Footer';
 import { CheckCircle2 } from 'lucide-react';
-import { formatPrice } from '../../utils/formatters';
 import { pixelService } from '../../services/pixelService';
 
 interface ProductPageProps {
@@ -43,7 +41,6 @@ export const ProductPage: React.FC<ProductPageProps> = ({
   onNavigateShop,
 }) => {
   const [selectedQuantity, setSelectedQuantity] = useState(1);
-  const [isCheckoutOpen, setIsCheckoutOpen] = useState(false);
   const [isCartOpen, setIsCartOpen] = useState(false);
   const [isTrackingOpen, setIsTrackingOpen] = useState(false);
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
@@ -98,43 +95,20 @@ export const ProductPage: React.FC<ProductPageProps> = ({
     setCartItems((prev) => prev.filter((item) => item.id !== id));
   };
 
-  // Direct Checkout Items for Modal
-  const getCheckoutItems = (): OrderItem[] => {
-    // If cart has items and opened from cart, use cart items; otherwise use currently viewed product
-    if (cartItems.length > 0) {
-      return cartItems.map((ci) => ({
-        productId: ci.id,
-        name: ci.name,
-        price: ci.price,
-        quantity: ci.quantity,
-        image: ci.image,
-        currency: ci.currency,
-        complementaryOption:
-          ci.id === product.id && selectedComplementary
-            ? { name: selectedComplementary.name, price: selectedComplementary.price }
-            : undefined,
-      }));
-    }
-
-    return [
-      {
-        productId: product.id,
-        name: product.name,
-        price: product.price,
-        quantity: selectedQuantity,
-        image: product.images[0]?.url || '',
-        currency: product.currency,
-        complementaryOption: selectedComplementary
-          ? { name: selectedComplementary.name, price: selectedComplementary.price }
-          : undefined,
-      },
-    ];
-  };
-
-  // Quick Direct Buy Now
+  // Quick Direct Buy Now via WhatsApp
   const handleBuyNow = (qty: number = selectedQuantity) => {
     setSelectedQuantity(qty);
-    setIsCheckoutOpen(true);
+    pixelService.trackInitiateCheckout(
+      [{ productId: product.id, name: product.name, price: product.price, quantity: qty, image: product.images[0]?.url || '', currency: product.currency }],
+      product.price * qty
+    );
+    sendWhatsAppOrder({
+      productName: product.name,
+      price: product.price,
+      quantity: qty,
+      currency: product.currency,
+      optionName: selectedComplementary?.name,
+    });
   };
 
   const handleAddComplementary = (item: ComplementaryProduct) => {
@@ -142,13 +116,7 @@ export const ProductPage: React.FC<ProductPageProps> = ({
   };
 
   const handleWhatsAppBuy = (qty: number) => {
-    const totalAmount = product.price * qty + (selectedComplementary ? selectedComplementary.price : 0);
-    const text = encodeURIComponent(
-      `Bonjour KayaShop ! Je souhaite commander :\n- Produit : ${product.name} (x${qty})\n${
-        selectedComplementary ? `- Option : ${selectedComplementary.name}\n` : ''
-      }- Total : ${formatPrice(totalAmount, product.currency)}\n\nPaiement à la livraison au Bénin. Merci de me confirmer la livraison !`
-    );
-    window.open(`https://wa.me/22943797042?text=${text}`, '_blank');
+    handleBuyNow(qty);
   };
 
   const handleScrollToReviews = () => {
@@ -326,17 +294,6 @@ export const ProductPage: React.FC<ProductPageProps> = ({
         inStock={product.inStock}
       />
 
-      {/* Modern Checkout Flow Modal */}
-      <CheckoutModal
-        isOpen={isCheckoutOpen}
-        onClose={() => setIsCheckoutOpen(false)}
-        items={getCheckoutItems()}
-        currency={product.currency}
-        onOrderCompleted={() => {
-          setCartItems([]);
-        }}
-      />
-
       {/* Order Tracking Modal */}
       <OrderTrackingModal
         isOpen={isTrackingOpen}
@@ -350,10 +307,6 @@ export const ProductPage: React.FC<ProductPageProps> = ({
         items={cartItems}
         onUpdateQuantity={handleUpdateCartQuantity}
         onRemoveItem={handleRemoveCartItem}
-        onCheckout={() => {
-          setIsCartOpen(false);
-          setIsCheckoutOpen(true);
-        }}
       />
 
       {/* Footer */}
