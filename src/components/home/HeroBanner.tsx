@@ -1,18 +1,20 @@
 import React from 'react';
 import type { Product } from '../../types/product';
 import { formatPrice } from '../../utils/formatters';
-import { ShieldCheck, ArrowRight, Truck, Star, CheckCircle } from 'lucide-react';
+import { ShieldCheck, ArrowRight, Truck, Star, CheckCircle, Play } from 'lucide-react';
 
 interface HeroBannerProps {
   products: Product[];
   onSelectProduct: (product: Product) => void;
   onExploreProducts: () => void;
+  onOpenVideo?: (product: Product) => void;
 }
 
 export const HeroBanner: React.FC<HeroBannerProps> = ({
   products,
   onSelectProduct,
   onExploreProducts,
+  onOpenVideo,
 }) => {
   const featuredProduct = products[0];
 
@@ -50,6 +52,18 @@ export const HeroBanner: React.FC<HeroBannerProps> = ({
                 <span>DÉCOUVRIR LES PRODUITS</span>
                 <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
               </button>
+
+              {featuredProduct && onOpenVideo && (
+                <button
+                  onClick={() => onOpenVideo(featuredProduct)}
+                  className="w-full sm:w-auto bg-white hover:bg-zinc-50 text-zinc-900 border border-zinc-300 hover:border-zinc-400 font-extrabold text-sm py-4 px-6 rounded-2xl shadow-xs flex items-center justify-center gap-2 transition-all transform active:scale-95 cursor-pointer"
+                >
+                  <span className="w-6 h-6 rounded-full bg-[#d94f26]/10 text-[#d94f26] flex items-center justify-center">
+                    <Play className="w-3.5 h-3.5 fill-[#d94f26]" />
+                  </span>
+                  <span>Voir la démo vidéo</span>
+                </button>
+              )}
             </div>
 
             {/* Compact Trust Chips with subtle hover bounce */}
