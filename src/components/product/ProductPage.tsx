@@ -230,16 +230,16 @@ export const ProductPage: React.FC<ProductPageProps> = ({
           </div>
         </section>
 
-        {/* 4. Product Benefits ("POURQUOI VOUS ALLEZ L'AIMER") */}
-        <ProductBenefits benefits={product.benefits} />
-
-        {/* 5. How It Works ("COMMENT ÇA MARCHE ?") */}
-        <HowItWorks steps={product.howItWorks} />
-
-        {/* 5.1 UGC Showcase: 3 AI Photos with African Profiles in Real-Life Scenarios */}
+        {/* 4. UGC Showcase: 3 Photos en situation réelle avec profils africains */}
         <ProductUGCShowcase product={product} />
 
-        {/* 6. Product Description (Accordions / Tabs) */}
+        {/* 5. Product Benefits ("POURQUOI VOUS ALLEZ L'AIMER") */}
+        <ProductBenefits benefits={product.benefits} />
+
+        {/* 6. How It Works ("COMMENT ÇA MARCHE ?") */}
+        <HowItWorks steps={product.howItWorks} />
+
+        {/* 7. Product Description (Accordions / Tabs) */}
         <ProductDescription
           shortDescription={product.shortDescription}
           detailedDescription={product.detailedDescription}
