@@ -1,7 +1,7 @@
 import { PRODUCTS as DEFAULT_PRODUCTS } from '../data/products';
 import type { Product } from '../types/product';
 
-const PRODUCTS_STORAGE_KEY = 'kayashop_custom_products_v2';
+const PRODUCTS_STORAGE_KEY = 'kayashop_custom_products_v6';
 
 export const productService = {
   /**
@@ -16,14 +16,22 @@ export const productService = {
       }
       const parsed = JSON.parse(data) as Product[];
       if (!Array.isArray(parsed) || parsed.length === 0) {
+        localStorage.setItem(PRODUCTS_STORAGE_KEY, JSON.stringify(DEFAULT_PRODUCTS));
         return DEFAULT_PRODUCTS;
       }
-      // Ensure all products have valid images and properties
+      // Ensure all products have valid images and properties and ugcGallery
       const valid = parsed.filter((p) => p && p.id && p.name && Array.isArray(p.images) && p.images.length > 0);
       if (valid.length === 0) {
+        localStorage.setItem(PRODUCTS_STORAGE_KEY, JSON.stringify(DEFAULT_PRODUCTS));
         return DEFAULT_PRODUCTS;
       }
-      return valid;
+      return valid.map((p) => {
+        const defaultMatch = DEFAULT_PRODUCTS.find((dp) => dp.id === p.id || dp.slug === p.slug);
+        return {
+          ...p,
+          ugcGallery: p.ugcGallery && p.ugcGallery.length > 0 ? p.ugcGallery : defaultMatch?.ugcGallery,
+        };
+      });
     } catch {
       return DEFAULT_PRODUCTS;
     }

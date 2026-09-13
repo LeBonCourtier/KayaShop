@@ -1,5 +1,6 @@
 import React from 'react';
 import type { Product } from '../../types/product';
+import { PRODUCTS as DEFAULT_PRODUCTS } from '../../data/products';
 import { CheckCircle2 } from 'lucide-react';
 
 interface ProductUGCShowcaseProps {
@@ -9,7 +10,15 @@ interface ProductUGCShowcaseProps {
 export const ProductUGCShowcase: React.FC<ProductUGCShowcaseProps> = ({
   product,
 }) => {
-  if (!product.ugcGallery || product.ugcGallery.length === 0) {
+  const fallbackGallery = DEFAULT_PRODUCTS.find(
+    (p) => p.id === product.id || p.slug === product.slug
+  )?.ugcGallery;
+
+  const gallery = (product.ugcGallery && product.ugcGallery.length > 0)
+    ? product.ugcGallery
+    : (fallbackGallery || []);
+
+  if (gallery.length === 0) {
     return null;
   }
 
@@ -29,7 +38,7 @@ export const ProductUGCShowcase: React.FC<ProductUGCShowcaseProps> = ({
 
         {/* 3 Photos Grid / Stack - Superbly positioned & 100% mobile responsive */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-5 sm:gap-6">
-          {product.ugcGallery.map((item, index) => (
+          {gallery.map((item, index) => (
             <div
               key={item.id || index}
               className="bg-white rounded-3xl overflow-hidden border border-zinc-200/90 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col group"
