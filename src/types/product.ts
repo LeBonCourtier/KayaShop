@@ -98,4 +98,11 @@ export interface Product {
   faqs: ProductFAQ[];
   complementaryProducts?: ComplementaryProduct[];
   relatedProductIds?: string[];
+  ugcGallery?: {
+    id: string;
+    url: string;
+    title: string;
+    subtitle: string;
+    tag: string;
+  }[];
 }

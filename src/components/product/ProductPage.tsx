@@ -11,6 +11,7 @@ import { TrustBadges } from './TrustBadges';
 import { ProductBenefits } from './ProductBenefits';
 import { HowItWorks } from './HowItWorks';
 import { ProductDescription } from './ProductDescription';
+import { ProductUGCShowcase } from './ProductUGCShowcase';
 import { ShippingInfo } from './ShippingInfo';
 import { CustomerReviews } from './CustomerReviews';
 import { SocialProof } from './SocialProof';
@@ -257,6 +258,12 @@ export const ProductPage: React.FC<ProductPageProps> = ({
 
         {/* 5. How It Works ("COMMENT ÇA MARCHE ?") */}
         <HowItWorks steps={product.howItWorks} />
+
+        {/* 5.1 UGC Showcase: 3 AI Photos with African Profiles in Real-Life Scenarios */}
+        <ProductUGCShowcase
+          product={product}
+          onOpenVideo={() => setIsVideoOpen(true)}
+        />
 
         {/* 6. Product Description (Accordions / Tabs) */}
         <ProductDescription

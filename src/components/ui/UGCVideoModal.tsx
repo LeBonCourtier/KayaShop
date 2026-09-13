@@ -13,31 +13,44 @@ interface ScriptScene {
   time: number; // in seconds
   caption: string;
   highlight?: string;
+  image?: string;
 }
 
 const PRODUCT_SCRIPTS: Record<string, { voiceText: string; scenes: ScriptScene[]; ugcImage: string }> = {
   'ouvre-vin-electrique': {
-    ugcImage: '/images/ugc/ugc-wine-opener.jpg',
+    ugcImage: '/images/ugc/ugc-wine-1.jpg',
     voiceText:
       "Si toi aussi tu en as marre des bouchons de vin cassés, regarde ça ! Avec l'ouvre-vin électrique KayaShop, tu poses l'appareil sur la bouteille, tu appuies sur le bouton, et en moins de six secondes ta bouteille est ouverte sans aucun effort. Livré avec son coffret complet. Commande dès maintenant sur WhatsApp, livraison 24h partout au Bénin avec contrôle du colis avant paiement !",
     scenes: [
-      { time: 0, caption: "Fini les bouchons de vin cassés ! 🍷", highlight: "Fini les bouchons" },
-      { time: 3.5, caption: "Pose l'appareil sur la bouteille et appuie sur le bouton ⚡", highlight: "Pose l'appareil" },
-      { time: 8, caption: "Ouvert en 6 secondes chrono sans forcer ! ✨", highlight: "6 secondes chrono" },
-      { time: 13, caption: "Coffret complet avec accessoires inclus 🎁", highlight: "Coffret complet" },
-      { time: 17, caption: "Livraison 24h au Bénin • Contrôle du colis avant paiement 🚚", highlight: "Paiement à la livraison" },
+      { time: 0, caption: "Fini les bouchons de vin cassés ! 🍷", highlight: "Fini les bouchons", image: '/images/ugc/ugc-wine-1.jpg' },
+      { time: 3.5, caption: "Pose l'appareil sur la bouteille et appuie sur le bouton ⚡", highlight: "Pose l'appareil", image: '/images/ugc/ugc-wine-3.jpg' },
+      { time: 8, caption: "Ouvert en 6 secondes chrono sans forcer ! ✨", highlight: "6 secondes chrono", image: '/images/ugc/ugc-wine-3.jpg' },
+      { time: 13, caption: "Coffret complet avec accessoires inclus 🎁", highlight: "Coffret complet", image: '/images/ugc/ugc-wine-2.jpg' },
+      { time: 17, caption: "Livraison 24h au Bénin • Contrôle du colis avant paiement 🚚", highlight: "Paiement à la livraison", image: '/images/ugc/ugc-wine-1.jpg' },
     ],
   },
-  'tensiometre-bras-electronique': {
-    ugcImage: '/images/ugc/ugc-tensiometre.jpg',
+  'tensiometre-electrique-rechargeable': {
+    ugcImage: '/images/ugc/ugc-tensio-1.jpg',
     voiceText:
       "Surveiller sa tension à la maison n'a jamais été aussi simple. Ce tensiomètre digital de bras mesure votre pression artérielle et votre pouls en un seul clic. Grand écran ultra lisible, idéal pour vous et vos parents. Commandez maintenant sur WhatsApp, livraison rapide au Bénin avec paiement à la réception !",
     scenes: [
-      { time: 0, caption: "Surveillez votre santé facilement à domicile 🩺", highlight: "Santé à domicile" },
-      { time: 4, caption: "Un seul clic pour une mesure ultra précise 📊", highlight: "Mesure précise" },
-      { time: 9, caption: "Grand écran digital clair & facile à lire 👀", highlight: "Grand écran" },
-      { time: 14, caption: "Idéal pour toute la famille et vos parents ❤️", highlight: "Toute la famille" },
-      { time: 18, caption: "Livraison 24h/48h Bénin • Paiement à la réception 🚀", highlight: "Paiement à la réception" },
+      { time: 0, caption: "Surveillez votre santé facilement à domicile 🩺", highlight: "Santé à domicile", image: '/images/ugc/ugc-tensio-1.jpg' },
+      { time: 4, caption: "Un seul clic pour une mesure ultra précise 📊", highlight: "Mesure précise", image: '/images/ugc/ugc-tensio-2.jpg' },
+      { time: 9, caption: "Grand écran digital clair & facile à lire 👀", highlight: "Grand écran", image: '/images/ugc/ugc-tensio-3.jpg' },
+      { time: 14, caption: "Idéal pour toute la famille et vos parents ❤️", highlight: "Toute la famille", image: '/images/ugc/ugc-tensio-1.jpg' },
+      { time: 18, caption: "Livraison 24h/48h Bénin • Paiement à la réception 🚀", highlight: "Paiement à la réception", image: '/images/ugc/ugc-tensio-2.jpg' },
+    ],
+  },
+  'tensiometre-bras-electronique': {
+    ugcImage: '/images/ugc/ugc-tensio-1.jpg',
+    voiceText:
+      "Surveiller sa tension à la maison n'a jamais été aussi simple. Ce tensiomètre digital de bras mesure votre pression artérielle et votre pouls en un seul clic. Grand écran ultra lisible, idéal pour vous et vos parents. Commandez maintenant sur WhatsApp, livraison rapide au Bénin avec paiement à la réception !",
+    scenes: [
+      { time: 0, caption: "Surveillez votre santé facilement à domicile 🩺", highlight: "Santé à domicile", image: '/images/ugc/ugc-tensio-1.jpg' },
+      { time: 4, caption: "Un seul clic pour une mesure ultra précise 📊", highlight: "Mesure précise", image: '/images/ugc/ugc-tensio-2.jpg' },
+      { time: 9, caption: "Grand écran digital clair & facile à lire 👀", highlight: "Grand écran", image: '/images/ugc/ugc-tensio-3.jpg' },
+      { time: 14, caption: "Idéal pour toute la famille et vos parents ❤️", highlight: "Toute la famille", image: '/images/ugc/ugc-tensio-1.jpg' },
+      { time: 18, caption: "Livraison 24h/48h Bénin • Paiement à la réception 🚀", highlight: "Paiement à la réception", image: '/images/ugc/ugc-tensio-2.jpg' },
     ],
   },
 };
@@ -156,7 +169,9 @@ export const UGCVideoModal: React.FC<UGCVideoModalProps> = ({
     };
   }, [isPlaying]);
 
-  // Update current caption based on timestamp
+  const [activeImage, setActiveImage] = useState(productData.ugcImage);
+
+  // Update current caption and image based on timestamp
   useEffect(() => {
     const scenes = productData.scenes;
     let found = scenes[0];
@@ -167,6 +182,9 @@ export const UGCVideoModal: React.FC<UGCVideoModalProps> = ({
       }
     }
     setActiveCaption(found.caption);
+    if (found.image) {
+      setActiveImage(found.image);
+    }
   }, [currentTime, productData.scenes]);
 
   if (!isOpen) return null;
@@ -185,10 +203,11 @@ export const UGCVideoModal: React.FC<UGCVideoModalProps> = ({
         {/* Background Image with Cinematic Ken Burns Movement */}
         <div className="absolute inset-0 z-0 overflow-hidden bg-zinc-900">
           <img
-            src={productData.ugcImage}
+            key={activeImage}
+            src={activeImage}
             alt={product.name}
-            className={`w-full h-full object-cover transition-transform duration-[22000ms] ease-out ${
-              isPlaying ? 'scale-115 translate-y-[-4%]' : 'scale-100 translate-y-0'
+            className={`w-full h-full object-cover transition-all duration-700 ease-out animate-fade-in ${
+              isPlaying ? 'scale-110 translate-y-[-2%]' : 'scale-100 translate-y-0'
             }`}
           />
           {/* Top & Bottom Gradient Shadows */}

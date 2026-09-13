@@ -20,6 +20,44 @@ export const PRODUCTS: Product[] = [
         url: '/images/products/wine-opener-1.png',
         alt: 'Set Ouvre-vin électrique complet avec accessoires et coffret',
         isPrimary: true,
+      },
+      {
+        id: 'img-ov-ugc-1',
+        url: '/images/ugc/ugc-wine-1.jpg',
+        alt: 'Ouverture festive et facile de vin avec l’ouvre-vin électrique KayaShop',
+      },
+      {
+        id: 'img-ov-ugc-2',
+        url: '/images/ugc/ugc-wine-2.jpg',
+        alt: 'Coffret complet et élégant dans une cuisine moderne',
+      },
+      {
+        id: 'img-ov-ugc-3',
+        url: '/images/ugc/ugc-wine-3.jpg',
+        alt: 'Extraction instantanée du bouchon avec éclairage LED bleu',
+      }
+    ],
+    ugcGallery: [
+      {
+        id: 'ugc-ov-1',
+        url: '/images/ugc/ugc-wine-1.jpg',
+        title: 'Ambiance festive & Dîners conviviaux',
+        subtitle: 'Plus de bouchons cassés devant vos invités. Débouchez vos bouteilles en souriant et sans le moindre effort.',
+        tag: 'Dîners & Fêtes 🎉'
+      },
+      {
+        id: 'ugc-ov-2',
+        url: '/images/ugc/ugc-wine-2.jpg',
+        title: 'Coffret prestige & Cadeau idéal',
+        subtitle: 'Livré avec son coffret soigné contenant le coupe-capsule, le verseur aérateur et le bouchon sous vide.',
+        tag: 'Coffret Complet 🎁'
+      },
+      {
+        id: 'ugc-ov-3',
+        url: '/images/ugc/ugc-wine-3.jpg',
+        title: 'Technologie & Éclairage LED bleu',
+        subtitle: 'Une pression sur le bouton et la vrille extrait le bouchon proprement en 6 secondes chrono.',
+        tag: '6s Chrono ⚡'
       }
     ],
     benefits: [
@@ -197,6 +235,44 @@ export const PRODUCTS: Product[] = [
         url: '/images/products/blood-pressure-1.png',
         alt: 'Tensiomètre électronique rechargeable avec grand écran digital',
         isPrimary: true,
+      },
+      {
+        id: 'img-bp-ugc-1',
+        url: '/images/ugc/ugc-tensio-1.jpg',
+        alt: 'Surveillance bienveillante de la santé des parents à la maison',
+      },
+      {
+        id: 'img-bp-ugc-2',
+        url: '/images/ugc/ugc-tensio-2.jpg',
+        alt: 'Prise de tension autonome et rapide avec grand écran digital',
+      },
+      {
+        id: 'img-bp-ugc-3',
+        url: '/images/ugc/ugc-tensio-3.jpg',
+        alt: 'Brassard confortable et lecture instantanée des constantes de santé',
+      }
+    ],
+    ugcGallery: [
+      {
+        id: 'ugc-bp-1',
+        url: '/images/ugc/ugc-tensio-1.jpg',
+        title: 'Prenez soin de vos proches à domicile',
+        subtitle: 'Idéal pour surveiller la tension de vos parents et aînés simplement et sans stress avec une précision médicale.',
+        tag: 'Santé Familiale ❤️'
+      },
+      {
+        id: 'ugc-bp-2',
+        url: '/images/ugc/ugc-tensio-2.jpg',
+        title: 'Mesure 1-clic 100% autonome',
+        subtitle: 'Un seul bouton pour lancer la mesure. La tension (SYS/DIA) et le pouls s’affichent clairement en quelques secondes.',
+        tag: 'Précision Médicale 📊'
+      },
+      {
+        id: 'ugc-bp-3',
+        url: '/images/ugc/ugc-tensio-3.jpg',
+        title: 'Grand écran LCD ultra lisible',
+        subtitle: 'Chiffres rétroéclairés grand format pour une lecture facile sans lunettes, avec indicateur de tension de l’OMS.',
+        tag: 'Lecture Simplifiée 👀'
       }
     ],
     benefits: [
