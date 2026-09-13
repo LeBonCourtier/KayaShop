@@ -20,21 +20,6 @@ export const PRODUCTS: Product[] = [
         url: '/images/products/wine-opener-1.png',
         alt: 'Set Ouvre-vin électrique complet avec accessoires et coffret',
         isPrimary: true,
-      },
-      {
-        id: 'img-ov-ugc-1',
-        url: '/images/ugc/ugc-wine-1.jpg',
-        alt: 'Ouverture festive et facile de vin avec l’ouvre-vin électrique KayaShop',
-      },
-      {
-        id: 'img-ov-ugc-2',
-        url: '/images/ugc/ugc-wine-2.jpg',
-        alt: 'Coffret complet et élégant dans une cuisine moderne',
-      },
-      {
-        id: 'img-ov-ugc-3',
-        url: '/images/ugc/ugc-wine-3.jpg',
-        alt: 'Extraction instantanée du bouchon avec éclairage LED bleu',
       }
     ],
     ugcGallery: [
@@ -235,21 +220,6 @@ export const PRODUCTS: Product[] = [
         url: '/images/products/blood-pressure-1.png',
         alt: 'Tensiomètre électronique rechargeable avec grand écran digital',
         isPrimary: true,
-      },
-      {
-        id: 'img-bp-ugc-1',
-        url: '/images/ugc/ugc-tensio-1.jpg',
-        alt: 'Surveillance bienveillante de la santé des parents à la maison',
-      },
-      {
-        id: 'img-bp-ugc-2',
-        url: '/images/ugc/ugc-tensio-2.jpg',
-        alt: 'Prise de tension autonome et rapide avec grand écran digital',
-      },
-      {
-        id: 'img-bp-ugc-3',
-        url: '/images/ugc/ugc-tensio-3.jpg',
-        alt: 'Brassard confortable et lecture instantanée des constantes de santé',
       }
     ],
     ugcGallery: [

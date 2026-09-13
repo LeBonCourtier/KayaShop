@@ -185,7 +185,7 @@ export const ProductPage: React.FC<ProductPageProps> = ({
             />
 
             {/* Price Display in FCFA */}
-            <div className="pt-1 pb-2 border-y border-zinc-200/80 my-1">
+            <div className="pt-1 pb-2 my-1">
               <PriceDisplay
                 price={product.price}
                 compareAtPrice={product.compareAtPrice}

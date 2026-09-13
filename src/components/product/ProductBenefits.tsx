@@ -35,7 +35,7 @@ export const ProductBenefits: React.FC<ProductBenefitsProps> = ({ benefits }) =>
   if (!benefits || benefits.length === 0) return null;
 
   return (
-    <section className="py-10 sm:py-16 border-t border-zinc-200/80">
+    <section className="py-8 sm:py-14">
       <div className="text-center max-w-2xl mx-auto mb-8 sm:mb-12">
         <span className="text-xs uppercase font-bold tracking-widest text-[#d94f26] bg-[#fff5f2] px-3 py-1 rounded-full border border-[#fbdcd2]">
           Points forts
