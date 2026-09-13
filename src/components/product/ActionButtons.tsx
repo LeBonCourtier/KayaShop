@@ -1,17 +1,15 @@
 import React, { useState } from 'react';
-import { ShoppingBag, ArrowRight, Minus, Plus, Check, MessageCircle } from 'lucide-react';
+import { ShoppingBag, ArrowRight, Minus, Plus, Check } from 'lucide-react';
 
 interface ActionButtonsProps {
   onBuyNow: (quantity: number) => void;
   onAddToCart: (quantity: number) => void;
-  onWhatsAppBuy?: (quantity: number) => void;
   inStock?: boolean;
 }
 
 export const ActionButtons: React.FC<ActionButtonsProps> = ({
   onBuyNow,
   onAddToCart,
-  onWhatsAppBuy,
   inStock = true,
 }) => {
   const [quantity, setQuantity] = useState(1);
@@ -93,18 +91,6 @@ export const ActionButtons: React.FC<ActionButtonsProps> = ({
           )}
         </button>
       </div>
-
-      {/* WhatsApp Compact Order */}
-      {onWhatsAppBuy && (
-        <button
-          type="button"
-          onClick={() => onWhatsAppBuy(quantity)}
-          className="w-full py-2 bg-emerald-50 hover:bg-emerald-100 text-emerald-800 border border-emerald-300 rounded-xl font-bold text-[11px] sm:text-xs flex items-center justify-center gap-1.5 transition-all cursor-pointer"
-        >
-          <MessageCircle className="w-3.5 h-3.5 text-emerald-600" />
-          <span>Commander sur WhatsApp (+229 43 79 70 42)</span>
-        </button>
-      )}
     </div>
   );
 };

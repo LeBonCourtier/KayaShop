@@ -8,7 +8,7 @@ export const FAQSection: React.FC = () => {
     {
       question: 'Comment passer une commande sur KayaShop ?',
       answer:
-        'C’est très simple et rapide : cliquez sur le bouton "Commander maintenant", renseignez votre nom, numéro de téléphone et ville de livraison. Vous pouvez également commander en un clic directement par WhatsApp avec notre équipe.',
+        'C’est très simple et rapide : cliquez sur le bouton "Commander maintenant", et validez directement votre commande. Notre équipe prépare votre colis immédiatement.',
       category: 'Commande',
     },
     {
@@ -44,7 +44,7 @@ export const FAQSection: React.FC = () => {
     {
       question: 'Comment joindre le service client ?',
       answer:
-        'Notre équipe est disponible 7j/7 sur WhatsApp au +229 43 79 70 42 pour toute question, conseil d’utilisation ou suivi de votre livraison.',
+        'Notre équipe est disponible 7j/7 pour toute question, conseil d’utilisation ou suivi de votre livraison.',
       category: 'Contact',
     },
   ];
@@ -59,49 +59,45 @@ export const FAQSection: React.FC = () => {
         
         {/* Header Title */}
         <div className="text-center max-w-2xl mx-auto mb-10 sm:mb-14">
-          <span className="text-xs uppercase font-bold tracking-widest text-[#d94f26] bg-[#fff5f2] px-3.5 py-1.5 rounded-full border border-[#fbdcd2] shadow-2xs">
-            Centre d’Aide & Questions
-          </span>
-          <h2 className="text-2xl sm:text-4xl font-black text-zinc-900 mt-3 tracking-tight">
-            Foire Aux Questions (FAQ)
+          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-[#d94f26]/10 text-[#d94f26] mb-3">
+            <HelpCircle className="w-3.5 h-3.5" />
+            <span>ASSISTANCE & INFORMATIONS</span>
+          </div>
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black text-zinc-900 tracking-tight">
+            Questions fréquentes
           </h2>
           <p className="text-xs sm:text-sm text-zinc-600 mt-2">
-            Tout ce que vous devez savoir sur vos commandes, la livraison au Bénin et le paiement à réception.
+            Tout ce qu'il faut savoir sur vos commandes, la livraison au Bénin et nos engagements de qualité.
           </p>
         </div>
 
-        {/* 2-Columns Layout: FAQ Accordion + WhatsApp Support Card */}
+        {/* 2-Columns Layout: FAQ Accordion + Support Card */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
           
-          {/* FAQ Accordion list */}
+          {/* FAQ List */}
           <div className="lg:col-span-8 space-y-3">
             {faqs.map((faq, idx) => {
               const isOpen = openIndex === idx;
               return (
                 <div
                   key={idx}
-                  className="rounded-2xl border border-zinc-200/90 bg-[#faf8f5] overflow-hidden shadow-2xs transition-all hover:border-zinc-300"
+                  className="rounded-2xl border border-zinc-200/80 bg-zinc-50/50 overflow-hidden transition-all duration-200 hover:border-zinc-300"
                 >
                   <button
-                    type="button"
                     onClick={() => toggle(idx)}
-                    className="w-full p-4 sm:p-5 flex items-center justify-between text-left font-bold text-xs sm:text-sm text-zinc-900 gap-3 cursor-pointer hover:text-[#d94f26] transition-colors"
-                    aria-expanded={isOpen}
+                    className="w-full p-4 sm:p-5 flex items-center justify-between text-left gap-4 cursor-pointer"
                   >
-                    <div className="flex items-center gap-3">
-                      <HelpCircle className="w-4 h-4 text-[#d94f26] shrink-0" />
-                      <span>{faq.question}</span>
-                    </div>
-                    {isOpen ? (
-                      <ChevronUp className="w-4 h-4 text-zinc-400 shrink-0" />
-                    ) : (
-                      <ChevronDown className="w-4 h-4 text-zinc-400 shrink-0" />
-                    )}
+                    <span className="font-extrabold text-xs sm:text-sm text-zinc-900 leading-snug">
+                      {faq.question}
+                    </span>
+                    <span className="p-1 rounded-full bg-white border border-zinc-200 text-zinc-600 shrink-0">
+                      {isOpen ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
+                    </span>
                   </button>
 
                   {isOpen && (
-                    <div className="px-5 pb-5 pt-1 text-xs sm:text-sm text-zinc-600 leading-relaxed border-t border-zinc-200/60 bg-white">
-                      <p className="pt-2">{faq.answer}</p>
+                    <div className="px-4 pb-4 sm:px-5 sm:pb-5 text-xs sm:text-sm text-zinc-600 leading-relaxed border-t border-zinc-200/50 pt-3">
+                      {faq.answer}
                     </div>
                   )}
                 </div>
@@ -109,7 +105,7 @@ export const FAQSection: React.FC = () => {
             })}
           </div>
 
-          {/* WhatsApp Direct Assistance Card */}
+          {/* Direct Assistance Card */}
           <div className="lg:col-span-4 bg-gradient-to-br from-[#18181b] to-[#27272a] rounded-3xl p-6 sm:p-8 text-white shadow-xl space-y-5">
             <div className="w-12 h-12 rounded-2xl bg-emerald-500/20 border border-emerald-500/30 flex items-center justify-center text-emerald-400">
               <MessageCircle className="w-6 h-6" />
@@ -144,7 +140,7 @@ export const FAQSection: React.FC = () => {
               className="w-full py-3.5 px-4 bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs sm:text-sm rounded-xl flex items-center justify-center gap-2 shadow-lg shadow-emerald-900/30 transition-all transform active:scale-95 cursor-pointer"
             >
               <MessageCircle className="w-4 h-4" />
-              <span>Écrire sur WhatsApp (+229 43 79 70 42)</span>
+              <span>Contacter un conseiller</span>
             </a>
 
             <div className="pt-2 text-center text-[11px] text-zinc-400 flex items-center justify-center gap-1.5">

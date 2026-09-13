@@ -21,10 +21,9 @@ import { ProductFAQ } from './ProductFAQ';
 import { FinalCTA } from './FinalCTA';
 import { StickyBuyBar } from './StickyBuyBar';
 import { OrderTrackingModal } from '../checkout/OrderTrackingModal';
-import { UGCVideoModal } from '../ui/UGCVideoModal';
 import { CartDrawer, type CartItem } from '../ui/CartDrawer';
 import { Footer } from '../layout/Footer';
-import { CheckCircle2, Play } from 'lucide-react';
+import { CheckCircle2 } from 'lucide-react';
 import { pixelService } from '../../services/pixelService';
 
 interface ProductPageProps {
@@ -45,7 +44,6 @@ export const ProductPage: React.FC<ProductPageProps> = ({
   const [selectedQuantity, setSelectedQuantity] = useState(1);
   const [isCartOpen, setIsCartOpen] = useState(false);
   const [isTrackingOpen, setIsTrackingOpen] = useState(false);
-  const [isVideoOpen, setIsVideoOpen] = useState(false);
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
   const [selectedComplementary, setSelectedComplementary] = useState<ComplementaryProduct | null>(null);
 
@@ -116,10 +114,6 @@ export const ProductPage: React.FC<ProductPageProps> = ({
 
   const handleAddComplementary = (item: ComplementaryProduct) => {
     setSelectedComplementary((prev) => (prev?.id === item.id ? null : item));
-  };
-
-  const handleWhatsAppBuy = (qty: number) => {
-    handleBuyNow(qty);
   };
 
   const handleScrollToReviews = () => {
@@ -215,27 +209,10 @@ export const ProductPage: React.FC<ProductPageProps> = ({
               </div>
             )}
 
-            {/* Interactive UGC Video Demo Trigger */}
-            <button
-              onClick={() => setIsVideoOpen(true)}
-              className="w-full py-2.5 px-4 rounded-2xl bg-gradient-to-r from-amber-500/10 via-orange-500/10 to-amber-500/10 hover:from-amber-500/20 hover:to-orange-500/20 border border-[#d94f26]/30 text-[#d94f26] font-bold text-xs flex items-center justify-between transition-all transform active:scale-98 cursor-pointer shadow-2xs group"
-            >
-              <span className="flex items-center gap-2">
-                <span className="w-6 h-6 rounded-full bg-[#d94f26] text-white flex items-center justify-center group-hover:scale-110 transition-transform">
-                  <Play className="w-3 h-3 fill-white ml-0.5" />
-                </span>
-                <span>Voir la vidéo de démonstration du produit</span>
-              </span>
-              <span className="text-[10px] uppercase font-extrabold bg-[#d94f26] text-white px-2 py-0.5 rounded-full">
-                Démo UGC
-              </span>
-            </button>
-
             {/* Action Buttons: Dominant Buy Now + Secondary Cart */}
             <ActionButtons
               onBuyNow={handleBuyNow}
               onAddToCart={handleAddToCart}
-              onWhatsAppBuy={handleWhatsAppBuy}
               inStock={product.inStock}
             />
 
@@ -260,10 +237,7 @@ export const ProductPage: React.FC<ProductPageProps> = ({
         <HowItWorks steps={product.howItWorks} />
 
         {/* 5.1 UGC Showcase: 3 AI Photos with African Profiles in Real-Life Scenarios */}
-        <ProductUGCShowcase
-          product={product}
-          onOpenVideo={() => setIsVideoOpen(true)}
-        />
+        <ProductUGCShowcase product={product} />
 
         {/* 6. Product Description (Accordions / Tabs) */}
         <ProductDescription
@@ -317,13 +291,6 @@ export const ProductPage: React.FC<ProductPageProps> = ({
         onBuyNow={() => handleBuyNow(1)}
         onAddToCart={() => handleAddToCart(1)}
         inStock={product.inStock}
-      />
-
-      {/* Interactive UGC Video Modal */}
-      <UGCVideoModal
-        product={product}
-        isOpen={isVideoOpen}
-        onClose={() => setIsVideoOpen(false)}
       />
 
       {/* Order Tracking Modal */}

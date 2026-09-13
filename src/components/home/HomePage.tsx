@@ -10,7 +10,6 @@ import { TrustSection } from './TrustSection';
 import { TestimonialsSection } from './TestimonialsSection';
 import { FAQSection } from './FAQSection';
 import { OrderTrackingModal } from '../checkout/OrderTrackingModal';
-import { UGCVideoModal } from '../ui/UGCVideoModal';
 import { CartDrawer, type CartItem } from '../ui/CartDrawer';
 import { Footer } from '../layout/Footer';
 
@@ -29,7 +28,6 @@ export const HomePage: React.FC<HomePageProps> = ({
   const [isCartOpen, setIsCartOpen] = useState<boolean>(false);
   const [isTrackingOpen, setIsTrackingOpen] = useState<boolean>(false);
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
-  const [videoProduct, setVideoProduct] = useState<Product | null>(null);
 
   // Cart Management
   const handleAddToCart = (product: Product) => {
@@ -108,12 +106,11 @@ export const HomePage: React.FC<HomePageProps> = ({
       {/* Main Content */}
       <main className="flex-1">
         
-        {/* 2. Hero Banner with Interactive Video Demo */}
+        {/* 2. Hero Banner */}
         <HeroBanner
           products={products}
           onSelectProduct={onSelectProduct}
           onExploreProducts={handleExploreScroll}
-          onOpenVideo={(p) => setVideoProduct(p)}
         />
 
         {/* 3. Category Grid */}
@@ -154,15 +151,6 @@ export const HomePage: React.FC<HomePageProps> = ({
         <FAQSection />
 
       </main>
-
-      {/* UGC Video Demonstration Modal */}
-      {videoProduct && (
-        <UGCVideoModal
-          product={videoProduct}
-          isOpen={!!videoProduct}
-          onClose={() => setVideoProduct(null)}
-        />
-      )}
 
       {/* Order Tracking Modal */}
       <OrderTrackingModal

@@ -20,7 +20,7 @@ export const TestimonialsSection: React.FC = () => {
       product: 'Tensiomètre électrique rechargeable',
       rating: 5,
       comment:
-        'Acheté pour mes parents à Calavi. Les chiffres sont très grands, recharge USB super pratique. Service client très à l’écoute sur WhatsApp.',
+        'Acheté pour mes parents à Calavi. Les chiffres sont très grands, recharge USB super pratique. Service client très réactif et attentionné.',
       date: 'Il y a 5 jours',
     },
     {

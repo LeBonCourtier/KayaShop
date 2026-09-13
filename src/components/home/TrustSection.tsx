@@ -20,8 +20,8 @@ export const TrustSection: React.FC = () => {
     },
     {
       icon: Headphones,
-      title: 'Assistance WhatsApp',
-      desc: 'Une équipe humaine et réactive au +229 43 79 70 42 pour vous assister.',
+      title: 'Service Client 7j/7',
+      desc: 'Une équipe humaine et réactive pour vous accompagner et vous assister.',
     },
   ];
 

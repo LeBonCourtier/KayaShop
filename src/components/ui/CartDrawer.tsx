@@ -1,7 +1,7 @@
 import React from 'react';
 import { formatPrice } from '../../utils/formatters';
 import { sendWhatsAppCartOrder } from '../../utils/whatsapp';
-import { X, Trash2, Plus, Minus, ShoppingBag, ShieldCheck, MessageCircle } from 'lucide-react';
+import { X, Trash2, Plus, Minus, ShoppingBag, ShieldCheck, ArrowRight } from 'lucide-react';
 
 export interface CartItem {
   id: string;
@@ -147,8 +147,8 @@ export const CartDrawer: React.FC<CartDrawerProps> = ({
               onClick={handleValidateWhatsApp}
               className="w-full btn-shimmer py-3.5 bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold text-sm rounded-xl shadow-md shadow-emerald-600/25 flex items-center justify-center gap-2 transition-all cursor-pointer transform active:scale-95"
             >
-              <MessageCircle className="w-4 h-4" />
-              <span>COMMANDER SUR WHATSAPP</span>
+              <ArrowRight className="w-4 h-4" />
+              <span>VALIDER LA COMMANDE</span>
             </button>
           </div>
         )}

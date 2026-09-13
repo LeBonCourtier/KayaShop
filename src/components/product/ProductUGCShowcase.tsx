@@ -1,15 +1,13 @@
 import React, { useState } from 'react';
 import type { Product } from '../../types/product';
-import { Sparkles, Play, Maximize2, X, CheckCircle2 } from 'lucide-react';
+import { Sparkles, Maximize2, X, CheckCircle2 } from 'lucide-react';
 
 interface ProductUGCShowcaseProps {
   product: Product;
-  onOpenVideo?: () => void;
 }
 
 export const ProductUGCShowcase: React.FC<ProductUGCShowcaseProps> = ({
   product,
-  onOpenVideo,
 }) => {
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
 
@@ -22,29 +20,17 @@ export const ProductUGCShowcase: React.FC<ProductUGCShowcaseProps> = ({
       <div className="max-w-7xl mx-auto">
         
         {/* Section Header */}
-        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-6 sm:mb-8">
-          <div>
-            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-[#d94f26]/10 text-[#d94f26] mb-2">
-              <Sparkles className="w-3.5 h-3.5" />
-              <span>PHOTOS CLIENTS & SITUATION RÉELLE</span>
-            </div>
-            <h2 className="text-xl sm:text-2xl lg:text-3xl font-black text-zinc-900 tracking-tight">
-              Découvrez le produit au quotidien
-            </h2>
-            <p className="text-xs sm:text-sm text-zinc-600 mt-1 max-w-2xl">
-              Photos réelles d'utilisation pour apprécier la qualité, la taille et la simplicité de prise en main.
-            </p>
+        <div className="text-center sm:text-left mb-6 sm:mb-8">
+          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-[#d94f26]/10 text-[#d94f26] mb-2">
+            <Sparkles className="w-3.5 h-3.5" />
+            <span>APERÇU EN SITUATION RÉELLE</span>
           </div>
-
-          {onOpenVideo && (
-            <button
-              onClick={onOpenVideo}
-              className="inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-2xl bg-zinc-900 hover:bg-zinc-800 text-white font-bold text-xs shadow-md transition-all transform active:scale-95 cursor-pointer shrink-0"
-            >
-              <Play className="w-3.5 h-3.5 fill-amber-400 text-amber-400" />
-              <span>Voir la démo vidéo animée</span>
-            </button>
-          )}
+          <h2 className="text-xl sm:text-2xl lg:text-3xl font-black text-zinc-900 tracking-tight">
+            Le produit sous tous ses angles
+          </h2>
+          <p className="text-xs sm:text-sm text-zinc-600 mt-1 max-w-2xl">
+            Découvrez nos photos réelles pour apprécier les finitions, la prise en main et la qualité au quotidien.
+          </p>
         </div>
 
         {/* 3 UGC Images Responsive Grid */}
