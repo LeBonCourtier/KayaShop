@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { HelpCircle, ChevronDown, ChevronUp, MessageCircle, PhoneCall, ShieldCheck, Truck, CreditCard } from 'lucide-react';
+import { HelpCircle, ChevronDown, ChevronUp } from 'lucide-react';
 
 export const FAQSection: React.FC = () => {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
@@ -55,7 +55,7 @@ export const FAQSection: React.FC = () => {
 
   return (
     <section id="faq" className="py-12 sm:py-20 bg-white border-t border-zinc-200/80">
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Header Title */}
         <div className="text-center max-w-2xl mx-auto mb-10 sm:mb-14">
@@ -71,84 +71,35 @@ export const FAQSection: React.FC = () => {
           </p>
         </div>
 
-        {/* 2-Columns Layout: FAQ Accordion + Support Card */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-          
-          {/* FAQ List */}
-          <div className="lg:col-span-8 space-y-3">
-            {faqs.map((faq, idx) => {
-              const isOpen = openIndex === idx;
-              return (
-                <div
-                  key={idx}
-                  className="rounded-2xl border border-zinc-200/80 bg-zinc-50/50 overflow-hidden transition-all duration-200 hover:border-zinc-300"
+        {/* Centered FAQ List */}
+        <div className="max-w-3xl mx-auto space-y-3">
+          {faqs.map((faq, idx) => {
+            const isOpen = openIndex === idx;
+            return (
+              <div
+                key={idx}
+                className="rounded-2xl border border-zinc-200/80 bg-zinc-50/50 overflow-hidden transition-all duration-200 hover:border-zinc-300"
+              >
+                <button
+                  onClick={() => toggle(idx)}
+                  className="w-full p-4 sm:p-5 flex items-center justify-between text-left gap-4 cursor-pointer"
                 >
-                  <button
-                    onClick={() => toggle(idx)}
-                    className="w-full p-4 sm:p-5 flex items-center justify-between text-left gap-4 cursor-pointer"
-                  >
-                    <span className="font-extrabold text-xs sm:text-sm text-zinc-900 leading-snug">
-                      {faq.question}
-                    </span>
-                    <span className="p-1 rounded-full bg-white border border-zinc-200 text-zinc-600 shrink-0">
-                      {isOpen ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
-                    </span>
-                  </button>
+                  <span className="font-extrabold text-xs sm:text-sm text-zinc-900 leading-snug">
+                    {faq.question}
+                  </span>
+                  <span className="p-1 rounded-full bg-white border border-zinc-200 text-zinc-600 shrink-0">
+                    {isOpen ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
+                  </span>
+                </button>
 
-                  {isOpen && (
-                    <div className="px-4 pb-4 sm:px-5 sm:pb-5 text-xs sm:text-sm text-zinc-600 leading-relaxed border-t border-zinc-200/50 pt-3">
-                      {faq.answer}
-                    </div>
-                  )}
-                </div>
-              );
-            })}
-          </div>
-
-          {/* Direct Assistance Card */}
-          <div className="lg:col-span-4 bg-gradient-to-br from-[#18181b] to-[#27272a] rounded-3xl p-6 sm:p-8 text-white shadow-xl space-y-5">
-            <div className="w-12 h-12 rounded-2xl bg-emerald-500/20 border border-emerald-500/30 flex items-center justify-center text-emerald-400">
-              <MessageCircle className="w-6 h-6" />
-            </div>
-
-            <div>
-              <h3 className="font-extrabold text-base sm:text-lg">Une autre question ?</h3>
-              <p className="text-xs text-zinc-300 mt-1 leading-relaxed">
-                Notre conseiller KayaShop est à votre disposition en direct pour vous aider à commander ou suivre votre colis.
-              </p>
-            </div>
-
-            <div className="space-y-2.5 pt-1 text-xs text-zinc-300">
-              <div className="flex items-center gap-2">
-                <Truck className="w-4 h-4 text-[#d94f26]" />
-                <span>Livraison 24h partout au Bénin</span>
+                {isOpen && (
+                  <div className="px-4 pb-4 sm:px-5 sm:pb-5 text-xs sm:text-sm text-zinc-600 leading-relaxed border-t border-zinc-200/50 pt-3">
+                    {faq.answer}
+                  </div>
+                )}
               </div>
-              <div className="flex items-center gap-2">
-                <ShieldCheck className="w-4 h-4 text-emerald-400" />
-                <span>Contrôle du colis avant paiement</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <CreditCard className="w-4 h-4 text-amber-400" />
-                <span>Espèces ou Mobile Money</span>
-              </div>
-            </div>
-
-            <a
-              href="https://wa.me/22943797042?text=Bonjour%20KayaShop,%20j'ai%20une%20question%20sur%20vos%20produits"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-full py-3.5 px-4 bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs sm:text-sm rounded-xl flex items-center justify-center gap-2 shadow-lg shadow-emerald-900/30 transition-all transform active:scale-95 cursor-pointer"
-            >
-              <MessageCircle className="w-4 h-4" />
-              <span>Contacter un conseiller</span>
-            </a>
-
-            <div className="pt-2 text-center text-[11px] text-zinc-400 flex items-center justify-center gap-1.5">
-              <PhoneCall className="w-3 h-3 text-zinc-500" />
-              <span>Assistance disponible 7j/7 de 8h à 21h</span>
-            </div>
-          </div>
-
+            );
+          })}
         </div>
 
       </div>
